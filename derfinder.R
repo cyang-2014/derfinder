@@ -41,7 +41,8 @@ bibs <- c(knitcitations = citation('knitcitations'),
     Rsamtools = citation('Rsamtools'),
     rtracklayer = citation('rtracklayer'),
     S4Vectors = citation('S4Vectors'),
-    bumphunterPaper = RefManageR::BibEntry(bibtype = 'article', key = 'bumphunterPaper', title = 'Bump hunting to identify differentially methylated regions in epigenetic epidemiology studies', author = 'Jaffe, Andrew E and Murakami, Peter and Lee, Hwajin and Leek, Jeffrey T and Fallin, M Daniele and Feinberg, Andrew P and Irizarry, Rafael A', year = 2012, journal = 'International Journal of Epidemiology')
+    bumphunterPaper = RefManageR::BibEntry(bibtype = 'article', key = 'bumphunterPaper', title = 'Bump hunting to identify differentially methylated regions in epigenetic epidemiology studies', author = 'Jaffe, Andrew E and Murakami, Peter and Lee, Hwajin and Leek, Jeffrey T and Fallin, M Daniele and Feinberg, Andrew P and Irizarry, Rafael A', year = 2012, journal = 'International Journal of Epidemiology'),
+    derfinderData = citation('derfinderData')
 )
 
 write.bibtex(bibs,
@@ -55,34 +56,36 @@ names(bib) <- names(bibs)
 ## ----'start', message=FALSE----------------------------------------------
 ## Load libraries
 library('derfinder')
+library('derfinderData')
 
 
 ## ----'phenoData', bootstrap.show.code=FALSE, results = 'asis'------------
 library('knitr')
-## Construct pheno table
-pheno <- data.frame(
-    gender = c('F', 'M', 'M', 'M', 'F', 'F', 'F', 'M', 'F', 'M', 'M', 'F'),
-    lab = c('HSB97.AMY', 'HSB92.AMY', 'HSB178.AMY', 'HSB159.AMY', 'HSB153.AMY', 'HSB113.AMY', 'HSB130.AMY', 'HSB136.AMY', 'HSB126.AMY', 'HSB145.AMY', 'HSB123.AMY', 'HSB135.AMY'),
-    Age = c(-0.547619047619048, -0.452380952380952, -0.571428571428571, -0.380952380952381, -0.666666666666667, -0.666666666666667, 21, 23, 30, 36, 37, 40),
-    RIN = c(9.1, 9.2, 9.8, 9.9, 9.3, 9.4, 8.6, 8.1, 8.4, 7.4, 7.5, 8.5)
-)
-pheno$structure_acronym <- 'AMY'
-pheno$structure_name <- 'amygdaloid complex'
-pheno$file <- paste0('http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/', pheno$lab, '.bw')
-pheno$group <- factor(ifelse(pheno$Age < 0, 'fetal', 'adult'), levels = c('fetal', 'adult'))
+## Get pheno table
+pheno <- subset(brainspanPheno, structure_acronym == 'AMY')
 
 ## Display the main information
 p <- pheno[, -which(colnames(pheno) %in% c('structure_acronym', 'structure_name', 'file'))]
+rownames(p) <- NULL
 kable(p, format = 'html', row.names = TRUE)
 
 
 ## ----'getData'-----------------------------------------------------------
 ## Determine the files to use and fix the names
-files <- pheno$file
-names(files) <- gsub('.AMY', '', pheno$lab)
+files <- rawFiles(system.file('extdata', 'AMY', package = 'derfinderData'), samplepatt = 'bw', fileterm = NULL)
+names(files) <- gsub('.bw', '', names(files))
 
-## Load the data
+## Load the data from disk
 system.time(fullCov <- fullCoverage(files = files, chrs = 'chr21'))
+
+
+## ----'webData', eval = FALSE---------------------------------------------
+## ## Determine the files to use and fix the names
+## files <- pheno$file
+## names(files) <- gsub('.AMY', '', pheno$lab)
+## 
+## ## Load the data from the web
+## system.time(fullCov <- fullCoverage(files = files, chrs = 'chr21'))
 
 
 ## ----'exploreFullCov'----------------------------------------------------

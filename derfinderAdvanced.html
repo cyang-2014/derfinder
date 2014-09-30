@@ -956,10 +956,10 @@ example('loadCoverage', 'derfinder')</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-up"></span> R message
 </button>
-<pre style="display:none"><code class="message r">## 2014-09-29 20:13:01 loadCoverage: finding chromosome lengths
-## 2014-09-29 20:13:01 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009101_accepted_hits.bam
-## 2014-09-29 20:13:01 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009102_accepted_hits.bam
-## 2014-09-29 20:13:01 loadCoverage: applying the cutoff to the merged data
+<pre style="display:none"><code class="message r">## 2014-09-30 14:50:44 loadCoverage: finding chromosome lengths
+## 2014-09-30 14:50:44 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009101_accepted_hits.bam
+## 2014-09-30 14:50:44 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009102_accepted_hits.bam
+## 2014-09-30 14:50:44 loadCoverage: applying the cutoff to the merged data
 ## Loading required package: parallel
 ## 
 ## Attaching package: 'BiocGenerics'
@@ -984,7 +984,7 @@ example('loadCoverage', 'derfinder')</code></pre>
 ##     table, tapply, union, unique, unlist, unsplit
 ## 
 ## Loading required package: stats4
-## 2014-09-29 20:13:01 filterData: originally there were 48129895 rows, now there are 454 rows. Meaning that 100 percent was filtered.
+## 2014-09-30 14:50:45 filterData: originally there were 48129895 rows, now there are 454 rows. Meaning that 100 percent was filtered.
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-up"></span> R output
@@ -1044,8 +1044,8 @@ example('loadCoverage', 'derfinder')</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-up"></span> R message
 </button>
-<pre style="display:none"><code class="message r">## 2014-09-29 20:13:02 getRegionCoverage: processing chr21
-## 2014-09-29 20:13:02 getRegionCoverage: done processing chr21
+<pre style="display:none"><code class="message r">## 2014-09-30 14:50:45 getRegionCoverage: processing chr21
+## 2014-09-30 14:50:45 getRegionCoverage: done processing chr21
 </code></pre>
 </div>
 <p>Next, we load the coverage again using <code>which</code> but without any padding. We can see how the coverage is not the same by looking at the maximum coverage for each sample.</p>
@@ -1058,40 +1058,40 @@ test <- loadCoverage(files = files, chr = '21', cutoff = NULL, which = regions, 
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-up"></span> R message
 </button>
-<pre style="display:none"><code class="message r">## 2014-09-29 20:13:02 loadCoverage: finding chromosome lengths
-## 2014-09-29 20:13:02 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009101_accepted_hits.bam
-## 2014-09-29 20:13:02 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009102_accepted_hits.bam
-## 2014-09-29 20:13:02 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009105_accepted_hits.bam
-## 2014-09-29 20:13:02 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009107_accepted_hits.bam
-## 2014-09-29 20:13:02 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009108_accepted_hits.bam
-## 2014-09-29 20:13:02 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009112_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009115_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009116_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009131_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009138_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009144_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009145_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009148_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009151_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009152_accepted_hits.bam
-## 2014-09-29 20:13:03 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009153_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009159_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009161_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009163_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009164_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009167_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031812_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031835_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031867_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031868_accepted_hits.bam
-## 2014-09-29 20:13:04 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031900_accepted_hits.bam
-## 2014-09-29 20:13:05 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031904_accepted_hits.bam
-## 2014-09-29 20:13:05 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031914_accepted_hits.bam
-## 2014-09-29 20:13:05 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031936_accepted_hits.bam
-## 2014-09-29 20:13:05 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031958_accepted_hits.bam
-## 2014-09-29 20:13:05 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031960_accepted_hits.bam
-## 2014-09-29 20:13:05 loadCoverage: applying the cutoff to the merged data
-## 2014-09-29 20:13:05 filterData: originally there were 48129895 rows, now there are 48129895 rows. Meaning that 0 percent was filtered.
+<pre style="display:none"><code class="message r">## 2014-09-30 14:50:45 loadCoverage: finding chromosome lengths
+## 2014-09-30 14:50:45 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009101_accepted_hits.bam
+## 2014-09-30 14:50:45 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009102_accepted_hits.bam
+## 2014-09-30 14:50:45 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009105_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009107_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009108_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009112_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009115_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009116_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009131_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009138_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009144_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009145_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009148_accepted_hits.bam
+## 2014-09-30 14:50:46 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009151_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009152_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009153_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009159_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009161_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009163_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009164_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009167_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031812_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031835_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031867_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031868_accepted_hits.bam
+## 2014-09-30 14:50:47 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031900_accepted_hits.bam
+## 2014-09-30 14:50:48 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031904_accepted_hits.bam
+## 2014-09-30 14:50:48 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031914_accepted_hits.bam
+## 2014-09-30 14:50:48 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031936_accepted_hits.bam
+## 2014-09-30 14:50:48 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031958_accepted_hits.bam
+## 2014-09-30 14:50:48 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031960_accepted_hits.bam
+## 2014-09-30 14:50:48 loadCoverage: applying the cutoff to the merged data
+## 2014-09-30 14:50:48 filterData: originally there were 48129895 rows, now there are 48129895 rows. Meaning that 0 percent was filtered.
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1123,40 +1123,40 @@ test2 <- loadCoverage(files = files, chr = '21', cutoff = NULL, which = regions,
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-up"></span> R message
 </button>
-<pre style="display:none"><code class="message r">## 2014-09-29 20:13:06 loadCoverage: finding chromosome lengths
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009101_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009102_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009105_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009107_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009108_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009112_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009115_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009116_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009131_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009138_accepted_hits.bam
-## 2014-09-29 20:13:06 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009144_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009145_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009148_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009151_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009152_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009153_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009159_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009161_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009163_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009164_accepted_hits.bam
-## 2014-09-29 20:13:07 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009167_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031812_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031835_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031867_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031868_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031900_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031904_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031914_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031936_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031958_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031960_accepted_hits.bam
-## 2014-09-29 20:13:08 loadCoverage: applying the cutoff to the merged data
-## 2014-09-29 20:13:09 filterData: originally there were 48129895 rows, now there are 48129895 rows. Meaning that 0 percent was filtered.
+<pre style="display:none"><code class="message r">## 2014-09-30 14:50:49 loadCoverage: finding chromosome lengths
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009101_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009102_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009105_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009107_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009108_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009112_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009115_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009116_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009131_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009138_accepted_hits.bam
+## 2014-09-30 14:50:49 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009144_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009145_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009148_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009151_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009152_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009153_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009159_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009161_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009163_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009164_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/ERR009167_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031812_accepted_hits.bam
+## 2014-09-30 14:50:50 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031835_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031867_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031868_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031900_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031904_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031914_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031936_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031958_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: loading BAM file /Library/Frameworks/R.framework/Versions/3.1/Resources/library/derfinder/extdata/genomeData/SRR031960_accepted_hits.bam
+## 2014-09-30 14:50:51 loadCoverage: applying the cutoff to the merged data
+## 2014-09-30 14:50:51 filterData: originally there were 48129895 rows, now there are 48129895 rows. Meaning that 0 percent was filtered.
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1482,7 +1482,7 @@ citation('derfinder')</code></pre>
 ## 
 ##   Leonardo Collado-Torres, Alyssa Frazee, Andrew Jaffe and Jeffrey
 ##   Leek (2014). derfinder: Fast differential expression analysis of
-##   RNA-seq data at base-pair resolution. R package version 0.99.2.
+##   RNA-seq data at base-pair resolution. R package version 0.99.4.
 ##   https://github.com/lcolladotor/derfinder
 ## 
 ## A BibTeX entry for LaTeX users is
@@ -1492,7 +1492,7 @@ citation('derfinder')</code></pre>
 ## resolution},
 ##     author = {Leonardo Collado-Torres and Alyssa Frazee and Andrew Jaffe and Jeffrey Leek},
 ##     year = {2014},
-##     note = {R package version 0.99.2},
+##     note = {R package version 0.99.4},
 ##     url = {https://github.com/lcolladotor/derfinder},
 ##   }
 </code></pre>
@@ -1560,7 +1560,7 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## [1] "2014-09-29 20:13:09 EDT"
+<pre style=""><code class="output r">## [1] "2014-09-30 14:50:52 EDT"
 </code></pre>
 </div>
 <p>Wallclock time spent generating the vignette.</p>
@@ -1568,7 +1568,7 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## Time difference of 23.13 secs
+<pre style=""><code class="output r">## Time difference of 21.95 secs
 </code></pre>
 </div>
 <p><code>R</code> session information.</p>
@@ -1599,9 +1599,9 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 </button>
 <pre style=""><code class="output r">##  package           * version  date      
 ##  acepack             1.3.3.3  2013-05-03
-##  AnnotationDbi       1.27.15  2014-09-24
+##  AnnotationDbi       1.27.16  2014-09-26
 ##  base64enc           0.1.2    2014-06-26
-##  BatchJobs           1.3      2014-07-10
+##  BatchJobs           1.4      2014-09-24
 ##  BBmisc              1.7      2014-06-21
 ##  bibtex              0.3.6    2013-07-29
 ##  Biobase             2.25.0   2014-04-12
@@ -1616,7 +1616,7 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 ##  cluster             1.15.3   2014-09-04
 ##  codetools           0.2.9    2014-08-21
 ##  DBI                 0.3.1    2014-09-24
-##  derfinder         * 0.99.2   2014-09-30
+##  derfinder         * 0.99.4   2014-09-30
 ##  derfinderHelper     0.99.2   2014-09-29
 ##  devtools          * 1.6      2014-09-23
 ##  digest              0.6.4    2013-12-03
@@ -1629,9 +1629,9 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 ##  Formula             1.1.2    2014-07-13
 ##  futile.logger       1.3.7    2014-01-23
 ##  futile.options      1.0.0    2010-04-06
-##  GenomeInfoDb      * 1.1.20   2014-09-25
+##  GenomeInfoDb      * 1.1.23   2014-09-28
 ##  GenomicAlignments   1.1.30   2014-09-23
-##  GenomicFeatures     1.17.15  2014-09-18
+##  GenomicFeatures     1.17.18  2014-09-29
 ##  GenomicFiles        1.1.19   2014-08-26
 ##  GenomicRanges     * 1.17.42  2014-09-23
 ##  Hmisc               3.14.5   2014-09-12
@@ -1639,9 +1639,9 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 ##  httr                0.5      2014-09-02
 ##  IRanges           * 1.99.28  2014-09-10
 ##  iterators           1.0.7    2014-04-11
-##  knitcitations     * 1.0.2    2014-09-29
+##  knitcitations     * 1.0.2    2014-09-30
 ##  knitr               1.6      2014-05-25
-##  knitrBootstrap    * 1.0.0    2014-09-29
+##  knitrBootstrap    * 1.0.0    2014-09-30
 ##  lambda.r            1.1.6    2014-01-23
 ##  lattice             0.20.29  2014-04-04
 ##  latticeExtra        0.6.26   2013-08-15
@@ -1697,7 +1697,7 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 ##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.1)                              
-##  Github (lcolladotor/derfinder@cc7af0a)      
+##  Github (lcolladotor/derfinder@031bb0f)      
 ##  Github (lcolladotor/derfinderHelper@54a9721)
 ##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.0)                              
@@ -1769,16 +1769,16 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 <a id='bib-rmarkdown'></a><a href="#cite-rmarkdown">[1]</a><cite> J. Allaire, J. McPherson, Y. Xie, H. Wickham, et al. <EM>rmarkdown: Dynamic Documents for R</EM>. R package version 0.3.3. 2014. URL: <a href="http://CRAN.R-project.org/package=rmarkdown">http://CRAN.R-project.org/package=rmarkdown</a>.</cite>
 </p>
 <p>
-<a id='bib-GenomeInfoDb'></a><a href="#cite-GenomeInfoDb">[2]</a><cite> S. Arora, M. Morgan, M. Carlson and H. Pages. <EM>GenomeInfoDb: Utilities for manipulating chromosome and other 'seqname' identifiers</EM>. R package version 1.1.20. 2014.</cite>
+<a id='bib-GenomeInfoDb'></a><a href="#cite-GenomeInfoDb">[2]</a><cite> S. Arora, M. Morgan, M. Carlson and H. Pages. <EM>GenomeInfoDb: Utilities for manipulating chromosome and other 'seqname' identifiers</EM>. R package version 1.1.23. 2014.</cite>
 </p>
 <p>
 <a id='bib-knitcitations'></a><a href="#cite-knitcitations">[3]</a><cite> C. Boettiger. <EM>knitcitations: Citations for knitr markdown files</EM>. R package version 1.0.2. 2014. URL: <a href="https://github.com/cboettig/knitcitations">https://github.com/cboettig/knitcitations</a>.</cite>
 </p>
 <p>
-<a id='bib-TxDbHsapiensUCSChg19knownGene'></a><a href="#cite-TxDbHsapiensUCSChg19knownGene">[4]</a><cite> M. Carlson. <EM>TxDb.Hsapiens.UCSC.hg19.knownGene: Annotation package for TranscriptDb object(s)</EM>. R package version 2.14.0. 2014.</cite>
+<a id='bib-TxDbHsapiensUCSChg19knownGene'></a><a href="#cite-TxDbHsapiensUCSChg19knownGene">[4]</a><cite> M. Carlson. <EM>TxDb.Hsapiens.UCSC.hg19.knownGene: Annotation package for TxDb object(s)</EM>. R package version 3.0.0. 2014.</cite>
 </p>
 <p>
-<a id='bib-derfinder'></a><a href="#cite-derfinder">[5]</a><cite> L. Collado-Torres, A. Frazee, A. Jaffe and J. Leek. <EM>derfinder: Fast differential expression analysis of RNA-seq data at base-pair resolution</EM>. R package version 0.99.2. 2014. URL: <a href="https://github.com/lcolladotor/derfinder">https://github.com/lcolladotor/derfinder</a>.</cite>
+<a id='bib-derfinder'></a><a href="#cite-derfinder">[5]</a><cite> L. Collado-Torres, A. Frazee, A. Jaffe and J. Leek. <EM>derfinder: Fast differential expression analysis of RNA-seq data at base-pair resolution</EM>. R package version 0.99.4. 2014. URL: <a href="https://github.com/lcolladotor/derfinder">https://github.com/lcolladotor/derfinder</a>.</cite>
 </p>
 <p>
 <a id='bib-derfinderHelper'></a><a href="#cite-derfinderHelper">[6]</a><cite> L. Collado-Torres, A. Jaffe and J. Leek. <EM>derfinderHelper: derfinder helper package</EM>. R package version 0.99.2. 2014. URL: <a href="https://github.com/lcolladotor/derfinderHelper">https://github.com/lcolladotor/derfinderHelper</a>.</cite>
@@ -1819,7 +1819,7 @@ knit('derfinderAdvanced.Rmd', tangle = TRUE)</code></pre>
 <a id='bib-GenomicFiles'></a><a href="#cite-GenomicFiles">[17]</a><cite> V. Obenchain, M. Love and M. Morgan. <EM>GenomicFiles: Distributed computing by file or by range</EM>. R package version 1.1.19. 2014.</cite>
 </p>
 <p>
-<a id='bib-AnnotationDbi'></a><a href="#cite-AnnotationDbi">[18]</a><cite> H. Pages, M. Carlson, S. Falcon and N. Li. <EM>AnnotationDbi: Annotation Database Interface</EM>. R package version 1.27.15. 2014.</cite>
+<a id='bib-AnnotationDbi'></a><a href="#cite-AnnotationDbi">[18]</a><cite> H. Pages, M. Carlson, S. Falcon and N. Li. <EM>AnnotationDbi: Annotation Database Interface</EM>. R package version 1.27.16. 2014.</cite>
 </p>
 <p>
 <a id='bib-S4Vectors'></a><a href="#cite-S4Vectors">[19]</a><cite> H. Pages, M. Lawrence and P. Aboyoun. <EM>S4Vectors: S4 implementation of vectors and lists</EM>. R package version 0.2.4. 2014.</cite>
