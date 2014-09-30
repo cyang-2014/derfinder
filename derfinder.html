@@ -872,7 +872,7 @@
 <h1>Introduction to <code>derfinder</code></h1>
 <p>If you wish, you can view this vignette online <a href="http://lcolladotor.github.io/derfinder/">here</a>.</p>
 <h1>Overview</h1>
-<p>In this vignette we present <code>derfinder</code> <a id='cite-colladotorres2014derfinder'></a>(<a href='https://github.com/lcolladotor/derfinder'>Collado-Torres, Frazee, Jaffe, and Leek, 2014</a>) which enables annotation-agnostic differential expression analysis at base-pair resolution. A example with publicly available data is showcased in this vignette. With it, the two main type of analyses that can be performed with <code>derfinder</code> are illustrated.</p>
+<p>In this vignette we present <code>derfinder</code> <a id='cite-derfinder'></a>(<a href='https://github.com/lcolladotor/derfinder'>Collado-Torres, Frazee, Jaffe, and Leek, 2014</a>) which enables annotation-agnostic differential expression analysis at base-pair resolution. A example with publicly available data is showcased in this vignette. With it, the two main type of analyses that can be performed with <code>derfinder</code> are illustrated.</p>
 <h1>Example</h1>
 <p>As an example, we will analyze a small subset of the samples from the <em>BrainSpan Atlas of the Human Brain</em> <a id='cite-brainspan'></a>(<a href='http://developinghumanbrain.org'>BrainSpan, 2011</a>) publicly available data.</p>
 <p>We first load the required packages.</p>
@@ -889,9 +889,7 @@ library('derfinder')</code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-up"></span> R source
 </button>
-<pre style="display:none"><code class="source r">## To format
-library('xtable')
-
+<pre style="display:none"><code class="source r">library('knitr')
 ## Construct pheno table
 pheno <- data.frame(
     gender = c('F', 'M', 'M', 'M', 'F', 'F', 'F', 'M', 'F', 'M', 'M', 'F'),
@@ -906,269 +904,271 @@ pheno$group <- factor(ifelse(pheno$Age < 0, 'fetal', 'adult'), levels = c('fetal
 
 ## Display the main information
 p <- pheno[, -which(colnames(pheno) %in% c('structure_acronym', 'structure_name', 'file'))]
-print(xtable(p), type = 'html')</code></pre>
-<!-- html table generated in R 3.1.1 by xtable 1.7-4 package -->
-<!-- Thu Sep 25 04:37:35 2014 -->
-<table border="1">
+kable(p, format = 'html', row.names = TRUE)</code></pre>
+<table>
+<thead>
 <tr>
-<th>
+<th align="left">
 </th>
-<th>
+<th align="left">
 gender
 </th>
-<th>
+<th align="left">
 lab
 </th>
-<th>
+<th align="right">
 Age
 </th>
-<th>
+<th align="right">
 RIN
 </th>
-<th>
+<th align="left">
 group
 </th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td align="right">
+<td align="left">
 1
 </td>
-<td>
+<td align="left">
 F
 </td>
-<td>
+<td align="left">
 HSB97.AMY
 </td>
 <td align="right">
--0.55
+-0.5476
 </td>
 <td align="right">
-9.10
+9.1
 </td>
-<td>
+<td align="left">
 fetal
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 2
 </td>
-<td>
+<td align="left">
 M
 </td>
-<td>
+<td align="left">
 HSB92.AMY
 </td>
 <td align="right">
--0.45
+-0.4524
 </td>
 <td align="right">
-9.20
+9.2
 </td>
-<td>
+<td align="left">
 fetal
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 3
 </td>
-<td>
+<td align="left">
 M
 </td>
-<td>
+<td align="left">
 HSB178.AMY
 </td>
 <td align="right">
--0.57
+-0.5714
 </td>
 <td align="right">
-9.80
+9.8
 </td>
-<td>
+<td align="left">
 fetal
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 4
 </td>
-<td>
+<td align="left">
 M
 </td>
-<td>
+<td align="left">
 HSB159.AMY
 </td>
 <td align="right">
--0.38
+-0.3810
 </td>
 <td align="right">
-9.90
+9.9
 </td>
-<td>
+<td align="left">
 fetal
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 5
 </td>
-<td>
+<td align="left">
 F
 </td>
-<td>
+<td align="left">
 HSB153.AMY
 </td>
 <td align="right">
--0.67
+-0.6667
 </td>
 <td align="right">
-9.30
+9.3
 </td>
-<td>
+<td align="left">
 fetal
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 6
 </td>
-<td>
+<td align="left">
 F
 </td>
-<td>
+<td align="left">
 HSB113.AMY
 </td>
 <td align="right">
--0.67
+-0.6667
 </td>
 <td align="right">
-9.40
+9.4
 </td>
-<td>
+<td align="left">
 fetal
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 7
 </td>
-<td>
+<td align="left">
 F
 </td>
-<td>
+<td align="left">
 HSB130.AMY
 </td>
 <td align="right">
-21.00
+21.0000
 </td>
 <td align="right">
-8.60
+8.6
 </td>
-<td>
+<td align="left">
 adult
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 8
 </td>
-<td>
+<td align="left">
 M
 </td>
-<td>
+<td align="left">
 HSB136.AMY
 </td>
 <td align="right">
-23.00
+23.0000
 </td>
 <td align="right">
-8.10
+8.1
 </td>
-<td>
+<td align="left">
 adult
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 9
 </td>
-<td>
+<td align="left">
 F
 </td>
-<td>
+<td align="left">
 HSB126.AMY
 </td>
 <td align="right">
-30.00
+30.0000
 </td>
 <td align="right">
-8.40
+8.4
 </td>
-<td>
+<td align="left">
 adult
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 10
 </td>
-<td>
+<td align="left">
 M
 </td>
-<td>
+<td align="left">
 HSB145.AMY
 </td>
 <td align="right">
-36.00
+36.0000
 </td>
 <td align="right">
-7.40
+7.4
 </td>
-<td>
+<td align="left">
 adult
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 11
 </td>
-<td>
+<td align="left">
 M
 </td>
-<td>
+<td align="left">
 HSB123.AMY
 </td>
 <td align="right">
-37.00
+37.0000
 </td>
 <td align="right">
-7.50
+7.5
 </td>
-<td>
+<td align="left">
 adult
 </td>
 </tr>
 <tr>
-<td align="right">
+<td align="left">
 12
 </td>
-<td>
+<td align="left">
 F
 </td>
-<td>
+<td align="left">
 HSB135.AMY
 </td>
 <td align="right">
-40.00
+40.0000
 </td>
 <td align="right">
-8.50
+8.5
 </td>
-<td>
+<td align="left">
 adult
 </td>
 </tr>
+</tbody>
 </table>
 </div>
 <h2>Load the data</h2>
@@ -1187,9 +1187,9 @@ system.time(fullCov <- fullCoverage(files = files, chrs = 'chr21'))</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:37:36 fullCoverage: processing chromosome chr21
-## 2014-09-25 04:37:36 loadCoverage: finding chromosome lengths
-## 2014-09-25 04:37:39 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB97.AMY.bw
+<pre style=""><code class="message r">## 2014-09-29 20:20:39 fullCoverage: processing chromosome chr21
+## 2014-09-29 20:20:39 loadCoverage: finding chromosome lengths
+## 2014-09-29 20:20:42 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB97.AMY.bw
 ## Loading required package: parallel
 ## 
 ## Attaching package: 'BiocGenerics'
@@ -1214,25 +1214,25 @@ system.time(fullCov <- fullCoverage(files = files, chrs = 'chr21'))</code></pre>
 ##     table, tapply, union, unique, unlist, unsplit
 ## 
 ## Loading required package: stats4
-## 2014-09-25 04:37:42 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB92.AMY.bw
-## 2014-09-25 04:37:46 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB178.AMY.bw
-## 2014-09-25 04:37:49 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB159.AMY.bw
-## 2014-09-25 04:37:52 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB153.AMY.bw
-## 2014-09-25 04:37:55 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB113.AMY.bw
-## 2014-09-25 04:37:58 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB130.AMY.bw
-## 2014-09-25 04:38:02 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB136.AMY.bw
-## 2014-09-25 04:38:05 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB126.AMY.bw
-## 2014-09-25 04:38:07 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB145.AMY.bw
-## 2014-09-25 04:38:11 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB123.AMY.bw
-## 2014-09-25 04:38:15 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB135.AMY.bw
-## 2014-09-25 04:38:17 loadCoverage: applying the cutoff to the merged data
-## 2014-09-25 04:38:17 filterData: originally there were 48129895 rows, now there are 48129895 rows. Meaning that 0 percent was filtered.
+## 2014-09-29 20:20:45 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB92.AMY.bw
+## 2014-09-29 20:20:49 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB178.AMY.bw
+## 2014-09-29 20:20:56 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB159.AMY.bw
+## 2014-09-29 20:20:58 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB153.AMY.bw
+## 2014-09-29 20:21:02 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB113.AMY.bw
+## 2014-09-29 20:21:05 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB130.AMY.bw
+## 2014-09-29 20:21:08 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB136.AMY.bw
+## 2014-09-29 20:21:12 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB126.AMY.bw
+## 2014-09-29 20:21:14 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB145.AMY.bw
+## 2014-09-29 20:21:18 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB123.AMY.bw
+## 2014-09-29 20:21:22 loadCoverage: loading BigWig file http://download.alleninstitute.org/brainspan/MRF_BigWig_Gencode_v10/bigwig/HSB135.AMY.bw
+## 2014-09-29 20:21:28 loadCoverage: applying the cutoff to the merged data
+## 2014-09-29 20:21:28 filterData: originally there were 48129895 rows, now there are 48129895 rows. Meaning that 0 percent was filtered.
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##    user  system elapsed 
-##   5.052   0.170  41.896
+##   5.052   0.175  49.519
 </code></pre>
 </div>
 <p>Note how loading the coverage for 12 samples from the web was quite fast. Although in this case we only retained the information for chromosome 21. In this case we didn't need to use <code>rawFiles()</code> because we already had the list of URLs for the BigWig files from <em>BrainSpan</em>.</p>
@@ -1290,7 +1290,7 @@ filteredCov <- lapply(fullCov, filterData, cutoff = 2)</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:38:19 filterData: originally there were 48129895 rows, now there are 130356 rows. Meaning that 99.73 percent was filtered.
+<pre style=""><code class="message r">## 2014-09-29 20:21:29 filterData: originally there were 48129895 rows, now there are 130356 rows. Meaning that 99.73 percent was filtered.
 </code></pre>
 </div>
 <p>The result is similar to <code>fullCov</code> but with the genomic position index as shown below.</p>
@@ -1367,8 +1367,8 @@ sampleDepths <- sampleDepth(collapseFullCoverage(fullCov), 1)</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:38:19 sampleDepth: Calculating sample quantiles
-## 2014-09-25 04:38:25 sampleDepth: Calculating sample adjustments
+<pre style=""><code class="message r">## 2014-09-29 20:21:29 sampleDepth: Calculating sample quantiles
+## 2014-09-29 20:21:36 sampleDepth: Calculating sample adjustments
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1437,77 +1437,77 @@ system.time(results <- analyzeChr(chr = 'chr21', filteredCov$chr21, models, grou
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:38:25 analyzeChr: Pre-processing the coverage data
-## 2014-09-25 04:38:31 analyzeChr: Calculating statistics
-## 2014-09-25 04:38:31 calculateStats: calculating the F-statistics
-## 2014-09-25 04:38:31 analyzeChr: Calculating pvalues
-## 2014-09-25 04:38:31 analyzeChr: Using the following theoretical cutoff for the F-statistics 12.2463833484351
-## 2014-09-25 04:38:31 calculatePvalues: identifying data segments
-## 2014-09-25 04:38:31 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:32 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:32 findRegions: identifying DER clusters
-## 2014-09-25 04:38:32 calculatePvalues: calculating F-statistics for permutation 1 and seed 20140924
-## 2014-09-25 04:38:32 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:33 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:33 calculatePvalues: calculating F-statistics for permutation 2 and seed 20140925
-## 2014-09-25 04:38:33 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:33 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:33 calculatePvalues: calculating F-statistics for permutation 3 and seed 20140926
-## 2014-09-25 04:38:33 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:33 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:33 calculatePvalues: calculating F-statistics for permutation 4 and seed 20140927
-## 2014-09-25 04:38:33 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:34 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:34 calculatePvalues: calculating F-statistics for permutation 5 and seed 20140928
-## 2014-09-25 04:38:34 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:34 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:34 calculatePvalues: calculating F-statistics for permutation 6 and seed 20140929
-## 2014-09-25 04:38:34 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:34 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:34 calculatePvalues: calculating F-statistics for permutation 7 and seed 20140930
-## 2014-09-25 04:38:35 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:35 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:35 calculatePvalues: calculating F-statistics for permutation 8 and seed 20140931
-## 2014-09-25 04:38:35 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:35 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:35 calculatePvalues: calculating F-statistics for permutation 9 and seed 20140932
-## 2014-09-25 04:38:35 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:35 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:35 calculatePvalues: calculating F-statistics for permutation 10 and seed 20140933
-## 2014-09-25 04:38:36 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:36 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:36 calculatePvalues: calculating F-statistics for permutation 11 and seed 20140934
-## 2014-09-25 04:38:36 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:36 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:36 calculatePvalues: calculating F-statistics for permutation 12 and seed 20140935
-## 2014-09-25 04:38:36 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:36 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:36 calculatePvalues: calculating F-statistics for permutation 13 and seed 20140936
-## 2014-09-25 04:38:37 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:37 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:37 calculatePvalues: calculating F-statistics for permutation 14 and seed 20140937
-## 2014-09-25 04:38:37 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:37 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:37 calculatePvalues: calculating F-statistics for permutation 15 and seed 20140938
-## 2014-09-25 04:38:38 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:38 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:38 calculatePvalues: calculating F-statistics for permutation 16 and seed 20140939
-## 2014-09-25 04:38:38 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:38 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:38 calculatePvalues: calculating F-statistics for permutation 17 and seed 20140940
-## 2014-09-25 04:38:38 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:38 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:38 calculatePvalues: calculating F-statistics for permutation 18 and seed 20140941
-## 2014-09-25 04:38:39 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:39 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:39 calculatePvalues: calculating F-statistics for permutation 19 and seed 20140942
-## 2014-09-25 04:38:39 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:39 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:39 calculatePvalues: calculating F-statistics for permutation 20 and seed 20140943
-## 2014-09-25 04:38:39 findRegions: segmenting F-stats information
-## 2014-09-25 04:38:39 findRegions: identifying candidate DERs
-## 2014-09-25 04:38:39 calculatePvalues: calculating the p-values
-## 2014-09-25 04:38:40 analyzeChr: Annotating regions
+<pre style=""><code class="message r">## 2014-09-29 20:21:36 analyzeChr: Pre-processing the coverage data
+## 2014-09-29 20:21:42 analyzeChr: Calculating statistics
+## 2014-09-29 20:21:42 calculateStats: calculating the F-statistics
+## 2014-09-29 20:21:43 analyzeChr: Calculating pvalues
+## 2014-09-29 20:21:43 analyzeChr: Using the following theoretical cutoff for the F-statistics 12.2463833484351
+## 2014-09-29 20:21:43 calculatePvalues: identifying data segments
+## 2014-09-29 20:21:43 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:43 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:43 findRegions: identifying DER clusters
+## 2014-09-29 20:21:43 calculatePvalues: calculating F-statistics for permutation 1 and seed 20140924
+## 2014-09-29 20:21:44 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:44 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:44 calculatePvalues: calculating F-statistics for permutation 2 and seed 20140925
+## 2014-09-29 20:21:44 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:44 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:44 calculatePvalues: calculating F-statistics for permutation 3 and seed 20140926
+## 2014-09-29 20:21:44 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:44 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:44 calculatePvalues: calculating F-statistics for permutation 4 and seed 20140927
+## 2014-09-29 20:21:45 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:45 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:45 calculatePvalues: calculating F-statistics for permutation 5 and seed 20140928
+## 2014-09-29 20:21:45 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:45 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:45 calculatePvalues: calculating F-statistics for permutation 6 and seed 20140929
+## 2014-09-29 20:21:46 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:46 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:46 calculatePvalues: calculating F-statistics for permutation 7 and seed 20140930
+## 2014-09-29 20:21:46 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:46 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:46 calculatePvalues: calculating F-statistics for permutation 8 and seed 20140931
+## 2014-09-29 20:21:46 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:46 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:46 calculatePvalues: calculating F-statistics for permutation 9 and seed 20140932
+## 2014-09-29 20:21:47 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:47 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:47 calculatePvalues: calculating F-statistics for permutation 10 and seed 20140933
+## 2014-09-29 20:21:47 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:47 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:47 calculatePvalues: calculating F-statistics for permutation 11 and seed 20140934
+## 2014-09-29 20:21:47 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:47 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:47 calculatePvalues: calculating F-statistics for permutation 12 and seed 20140935
+## 2014-09-29 20:21:48 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:48 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:48 calculatePvalues: calculating F-statistics for permutation 13 and seed 20140936
+## 2014-09-29 20:21:48 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:48 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:48 calculatePvalues: calculating F-statistics for permutation 14 and seed 20140937
+## 2014-09-29 20:21:48 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:48 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:48 calculatePvalues: calculating F-statistics for permutation 15 and seed 20140938
+## 2014-09-29 20:21:49 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:49 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:49 calculatePvalues: calculating F-statistics for permutation 16 and seed 20140939
+## 2014-09-29 20:21:49 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:49 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:49 calculatePvalues: calculating F-statistics for permutation 17 and seed 20140940
+## 2014-09-29 20:21:50 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:50 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:50 calculatePvalues: calculating F-statistics for permutation 18 and seed 20140941
+## 2014-09-29 20:21:50 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:50 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:50 calculatePvalues: calculating F-statistics for permutation 19 and seed 20140942
+## 2014-09-29 20:21:51 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:51 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:51 calculatePvalues: calculating F-statistics for permutation 20 and seed 20140943
+## 2014-09-29 20:21:51 findRegions: segmenting F-stats information
+## 2014-09-29 20:21:51 findRegions: identifying candidate DERs
+## 2014-09-29 20:21:51 calculatePvalues: calculating the p-values
+## 2014-09-29 20:21:52 analyzeChr: Annotating regions
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
@@ -1521,7 +1521,7 @@ system.time(results <- analyzeChr(chr = 'chr21', filteredCov$chr21, models, grou
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##    user  system elapsed 
-##  33.671   1.455  34.924
+##  35.346   1.429  36.638
 </code></pre>
 </div>
 <p>To speed up <code>analyzeChr()</code>, you might need to use several cores via the <code>mc.cores</code> argument. If memory is limiting, you might want to use a smaller <code>chunksize</code> (default is 5 million). Note that if you use too many cores, you might hit the input/output ceiling of your data network and/or hard drives speed.</p>
@@ -1853,17 +1853,17 @@ results$timeinfo</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##                      init                     setup 
-## "2014-09-25 04:38:25 EDT" "2014-09-25 04:38:25 EDT" 
+## "2014-09-29 20:21:36 EDT" "2014-09-29 20:21:36 EDT" 
 ##                  prepData                  savePrep 
-## "2014-09-25 04:38:31 EDT" "2014-09-25 04:38:31 EDT" 
+## "2014-09-29 20:21:42 EDT" "2014-09-29 20:21:42 EDT" 
 ##            calculateStats                 saveStats 
-## "2014-09-25 04:38:31 EDT" "2014-09-25 04:38:31 EDT" 
+## "2014-09-29 20:21:42 EDT" "2014-09-29 20:21:43 EDT" 
 ##             saveStatsOpts          calculatePvalues 
-## "2014-09-25 04:38:31 EDT" "2014-09-25 04:38:40 EDT" 
+## "2014-09-29 20:21:43 EDT" "2014-09-29 20:21:52 EDT" 
 ##                  saveRegs                  annotate 
-## "2014-09-25 04:38:40 EDT" "2014-09-25 04:39:00 EDT" 
+## "2014-09-29 20:21:52 EDT" "2014-09-29 20:22:13 EDT" 
 ##                  saveAnno 
-## "2014-09-25 04:39:00 EDT"
+## "2014-09-29 20:22:13 EDT"
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1876,7 +1876,7 @@ library('ggplot2')
 ggplot(timed.df, aes(y = Step, x = Seconds)) + geom_point()</code></pre>
 <div class="row">
 <div class="col-md-offset-3 col-md-6">
-<a href="#" class="thumbnail"><img src="data:image/png;base64,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5861okWLuvXVq1e3m266ycqVK5fv9rELz1Z+7Pa8RgABBBBAwG8BX0bwx48f/8ZxHTlyJLLs6NGjLsB7C06cOGGnT5/2Xn7j8dSpU7Zv377Icr1WHl5avHixbdu2zXvpHk+ePBl5rc7EFVdcYYMGDXI/derUsbfeeiuyPr8nyl/lKMWWn9/2WhZdpl7H1lPLSAiEVWDHjh324IMPWo8ePey1114L62FQbwSyViCtI/jt27fbn//8Z6tUqZIbLd922222atUqmzx5spUtW9YF4bvvvjsP7ptvvum2KVasmAvC+/fvd6Pxq666yjZs2GAafX//+9+P7PPuu+/aokWLXP7qGNx11102f/58y83NdSP4nTt32pw5c1xwrVevnl177bWRfb0nVapUsT179pjyysnJsY4dO9ru3bvtlVdesVtvvdXGjBljpUqVss2bN1u3bt1MHQIvDRkyxB599FH38oUXXnDrlYc6DOrYlCxZ0nr27GmaVZg4caJVrFjR1Lm59957IzMI2m7t2rVelu5R+5UoUSLPsnhfFClSxOR4ps5SvHmmc3tvRsV7TGdZqchbtjJO9jyloi6FzSOV7eHxxx+3N954wxWtWbhLLrnELrjggsJWpVDbeW3Y61wXaqcMbqT66u8/LG24ePHirr7nahv2o6l4bThRY7WnRFNaA/ykSZNcwGvevLl98sknpqntAwcOWL9+/VzQf/3112358uXuTVIHsGnTJluxYoU99NBDLqjPmzfPBSjvj1uBynvuHbCWDRgwwAWxZ555xuXfqlUrN92uqfdXX33V+vfv796EX3rpJRe4te/HH39s69atczMBCtzqGJQvX95GjhzpArzKbt26te3du9e6dOliTZs2tYULF9qCBQvyBPjo+ngj9tmzZ7vLDY0bN7YPPvjANKOg0U6LFi2sU6dOrgNz7Ngx12lQXWQyfvx4PY2kO+64wypXrhx5ncgTvcnomMIS4L2GHKb6ylgdxLAkGafKd82aNXkOWx36Dh065FmW7At11HXpTAOCsKRUGqf7mFXXc7kNp9tX+XttuEyZMgkVpxnnRFNaA7yC2nnnnefq1qZNG/eoEfW4cePcQavi1apViwR4vUF425cuXdouv/xyd63cO7j83pjUOxo2bJhpe11394Ks9tHrjRs32ujRo10WCsYaSSs1atTILr74YlMPVm/QGtko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" alt="plot of chunk exploreTime" /> </a>
+<a href="#" class="thumbnail"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAYAAACmKP9/AAAEJGlDQ1BJQ0MgUHJvZmlsZQAAOBGFVd9v21QUPolvUqQWPyBYR4eKxa9VU1u5GxqtxgZJk6XtShal6dgqJOQ6N4mpGwfb6baqT3uBNwb8AUDZAw9IPCENBmJ72fbAtElThyqqSUh76MQPISbtBVXhu3ZiJ1PEXPX6yznfOec7517bRD1fabWaGVWIlquunc8klZOnFpSeTYrSs9RLA9Sr6U4tkcvNEi7BFffO6+EdigjL7ZHu/k72I796i9zRiSJPwG4VHX0Z+AxRzNRrtksUvwf7+Gm3BtzzHPDTNgQCqwKXfZwSeNHHJz1OIT8JjtAq6xWtCLwGPLzYZi+3YV8DGMiT4VVuG7oiZpGzrZJhcs/hL49xtzH/Dy6bdfTsXYNY+5yluWO4D4neK/ZUvok/17X0HPBLsF+vuUlhfwX4j/rSfAJ4H1H0qZJ9dN7nR19frRTeBt4Fe9FwpwtN+2p1MXscGLHR9SXrmMgjONd1ZxKzpBeA71b4tNhj6JGoyFNp4GHgwUp9qplfmnFW5oTdy7NamcwCI49kv6fN5IAHgD+0rbyoBc3SOjczohbyS1drbq6pQdqumllRC/0ymTtej8gpbbuVwpQfyw66dqEZyxZKxtHpJn+tZnpnEdrYBbueF9qQn93S7HQGGHnYP7w6L+YGHNtd1FJitqPAR+hERCNOFi1i1alKO6RQnjKUxL1GNjwlMsiEhcPLYTEiT9ISbN15OY/jx4SMshe9LaJRpTvHr3C/ybFYP1PZAfwfYrPsMBtnE6SwN9ib7AhLwTrBDgUKcm06FSrTfSj187xPdVQWOk5Q8vxAfSiIUc7Z7xr6zY/+hpqwSyv0I0/QMTRb7RMgBxNodTfSPqdraz/sDjzKBrv4zu2+a2t0/HHzjd2Lbcc2sG7GtsL42K+xLfxtUgI7YHqKlqHK8HbCCXgjHT1cAdMlDetv4FnQ2lLasaOl6vmB0CMmwT/IPszSueHQqv6i/qluqF+oF9TfO2qEGTumJH0qfSv9KH0nfS/9TIp0Wboi/SRdlb6RLgU5u++9nyXYe69fYRPdil1o1WufNSdTTsp75BfllPy8/LI8G7AUuV8ek6fkvfDsCfbNDP0dvRh0CrNqTbV7LfEEGDQPJQadBtfGVMWEq3QWWdufk6ZSNsjG2PQjp3ZcnOWWing6noonSInvi0/Ex+IzAreevPhe+CawpgP1/pMTMDo64G0sTCXIM+KdOnFWRfQKdJvQzV1+Bt8OokmrdtY2yhVX2a+qrykJfMq4Ml3VR4cVzTQVz+UoNne4vcKLoyS+gyKO6EHe+75Fdt0Mbe5bRIf/wjvrVmhbqBN97RD1vxrahvBOfOYzoosH9bq94uejSOQGkVM6sN/7HelL4t10t9F4gPdVzydEOx83Gv+uNxo7XyL/FtFl8z9ZAHF4bBsrEwAAQABJREFUeAHt3Qm4FMW5//H3wGHfV9mRHYkQVIhcQTFEQQMBFUSDCy4xaAgxMTEXjTdPbmJwTXyuPsYg4iW4YABjXKIIArK7gAgIKpvIvu/7+udX+ffcOeM5cGbrqRm+9TwwS3dXVX+qp9+q6j4zeSdOJiMhgAACCCCAQE4JlMipvWFnEEAAAQQQQMAJEOA5EBBAAAEEEMhBAQJ8DjYqu4QAAggggAABnmMAAQQQQACBHBQgwOdgo7JLCCCAAAIIEOA5BhBAAAEEEMhBAQJ8DjYqu4QAAggggAABnmMAAQQQQACBHBQgwOdgo7JLCCCAAAIIEOA5BhBAAAEEEMhBAQJ8DjYqu4QAAggggAABnmMAAQQQQACBHBQgwOdgo7JLCCCAAAII5EPgp8COHTvs2LFjSVWuVKlSdvToUeMHA5NijGycn5/vLJNtl0iGZ/iTkiVLWl5enjtGz3CKlOy+LHWMHjlyJCX5kYlZ6dKl7fDhwxmlKFu2rFWsWDGhOhDgE2JL/0Z79+5NOsDXrVvX1FE4ePBg+iucRAllypRxHyLfOyI1a9a0Q4cOmdrG56STvJI6dz6nypUru4C0c+dOn6vpOiHqLGf6RH86pHLlyrlAoM+870lBy/fzkjqg1atXt9WrV2ecM9EAzxR9xpuOCiCAAAIIIJB6AQJ86k3JEQEEEEAAgYwLEOAz3gRUAAEEEEAAgdQLEOBTb0qOCCCAAAIIZFyAAJ/xJqACCCCAAAIIpF6AAJ96U3JEAAEEEEAg4wIE+Iw3ARVAAAEEEEAg9QIE+NSbkiMCCCCAAAIZFyDAZ7wJqAACCCCAAAKpFyDAp96UHBFAAAEEEMi4AAE+401ABRBAAAEEEEi9AAE+9abkiAACCCCAQMYFCPAZbwIqgAACCCCAQOoFCPCpNyVHBBBAAAEEMi5AgM94E1ABBBBAAAEEUi9AgE+9KTkigAACCCCQcQECfMabgAoggAACCCCQegECfOpNyREBBBBAAIGMCxDgM94EVAABBBBAAIHUCxDgU29KjggggAACCGRcgACf8SagAggggAACCKRegACfelNyRAABBBBAIOMCBPgUNcGiRYtsz549KcotNdns27fPTpw4kZrMyAUBBBBAIKsECPDFaK5Dhw7Z8ePHC6yp19HBc+bMmXb48OEC6xT24siRI4W9ndL3VK9f/OIXVqNGDTv//PNtwYIFKc2fzBBAAAEE/BfIOxkMGOKdop1Gjx5tCvC7du2yyy67zNq3b29Tp061FStW2NGjR61Tp05WtWpVGzFihJ199tl29dVX26uvvmqDBg1yuQ4bNszuv/9+e/zxx61cuXJWokQJq1y5sg0YMMDy8vLcOvv373d5RlfjvPPOs/Lly0e/VeznkydPtn79+kXWv/jii+2NN96IvPbtScmSJe3YsWO+Vesb9VF7qM2L05H7xsYhvqFjTCm2UxpiFYpVVJkyZdzn4cCBA8VaP5MrZcMxmp+fb2XLlrW9e/dmkqpYZauu+iz5nHR+1rla5/5MJoXoatWqJVSF/IS2OkM20gly5cqV9pOf/MQF2w0bNpiC8ZIlS2zw4MHuBPr000/bkCFDrEGDBnbNNde4UX30iTV4rg/dddddZw0bNrTnnnvOli5daq1atXKSakB1ImJT0AGIff90r2ODpV4nmtfpykrFctVNQSkb+pqqq8+Wao+gfsFjKtooXXlki2e21DO6/dPVZqnIF8/iKyZzXiTAn8JZQUcj8jFjxpiuZ/fo0cMF+G3bttnw4cPdlurZ7969u8hcggBfqlQp1wnQio0aNbItW7ZEAnyFChVc5yA6kzVr1tiOHTui3yr28wsuuMAuv/xymzRpkptd+PnPf55wXsUuNIkVNZLTqDiZAzmJ4ou9qdpaHTHf7rWI3QGNjpR8HyFpdKTPRaLHeex+p+u1gpHq6fvMjWYI1fa+e6qdNNNw8ODBdDVZSvLV571ixYoZ91QdEk0E+FPI6QO9detWu/vuu01BXaN1BcsqVaq4KXgF73fffdcUoHUSUIDSB0yjfCVN7QQjc11737Rpk9WpU8dWrVpl3bp1O0XJyS3Sgfnss8+6UbFyCjoZyeXK1ggggAAC2SRAgD9Fa5UuXdr13jSlruuEl1xyibsm07p1axdAFThbtGhhCqiaoh85cqTdc8897lr7M888YxqZapSipNmAsWPHunVr1aplzZs3P0XJqVl01llnufr73lNOzd6SCwIIIIBAtAABPlqjkOe6WU2jb43Qg6lPTdUH17kV3JV69erlpvA1ladr9uoQaMosSArwulavWQEFfhICCCCAAALpFCDAF0NXQTs2BYE9+v3o9aKDu9YJpvEJ7tFiPEcAAQQQSJcAfwefLtmYfPV36SQEEEAAAQTCEiDAhyVNOQgggAACCIQoQIAPEZuiEEAAAQQQCEuAAB+WNOUggAACCCAQogABPkRsikIAAQQQQCAsAQJ8WNKUgwACCCCAQIgCBPgQsSkKAQQQQACBsAQI8GFJUw4CCCCAAAIhChDgQ8SmKAQQQAABBMISIMCHJU05CCCAAAIIhChAgA8Rm6IQQAABBBAIS4AAH5Y05SCAAAIIIBCiAAE+RGyKQgABBBBAICwBAnxY0pSDAAIIIIBAiAIE+BCxKQoBBBBAAIGwBAjwYUlTDgIIIIAAAiEKEOBDxKYoBBBAAAEEwhIgwIclTTkIIIAAAgiEKECADxGbohBAAAEEEAhLgAAfljTlIIAAAgggEKIAAT5EbIpCAAEEEEAgLAECfFjSlIMAAggggECIAgT4ELEpCgEEEEAAgbAECPBhSVMOAggggAACIQoQ4EPEpigEEEAAAQTCEiDAhyVNOQgggAACCIQoQIAPEZuiEEAAAQQQCEuAAB+WNOUggAACCCAQogABPkRsikIAAQQQQCAsAQJ8WNKUgwACCCCAQIgCBPgQsSkKAQQQQACBsAQI8GFJUw4CCCCAAAIhChDgQ8SmKAQQQAABBMISIMCHJU05CCCAAAIIhChAgA8Rm6IQQAABBBAISyA/rIJyoZwpU6bYnDlzrGTJkm53mjdvbr169bKyZcsWunsHDhywL774ws4777xCl/MmAggggAAC6RI4Y0bwR44c+Ybh0aNHI+8dO3Ys8jx4cvz4cYt+XwH70ksvtaFDh9qvfvUrK1OmjI0bNy5Y3bT+oUOHIq83bdpkn332WeR17PLIAp7khMC+ffvs0UcftSFDhtiMGTNyYp/YCQQQyF6BnB/BP/7441auXDkrUaKEVa5c2QYMGGBjxoyxHTt22MGDB93J+J///Kft3r3bTpw4YT179nTrDx8+3D3qvQ4dOliXLl0KtHJ+fr59//vfd8FenQCd0BcuXOhG9+o46CQ/c+ZMW758uXt/+/bt31iuOilp+507dxbIXy9URjIpLy/P1SfZfJKpQ3G21YxIMCtSnPUztc7pPP/4xz+6Y0v1mzBhgmnGp0mTJqFXNxsshaLjX/98Pz5VV5n6Xs/gfOJ7PfGUQDgpuQgSTh2TKmXv3r123XXXWcOGDe25556zpUuXuoCqafOLLrrIjbArVapk/fv3ty1bttikSZPsyiuvdB2Ae++913RS/+1vf2sXXnjhN+qhD32NGjXcuuoIDB482HUSnnjiCdu6davrFOj9du3a2dSpU7+xvHbt2i7PXbt22SOPPFIg/3vuucdq1apV4L14X+gDX7169Xg3C319GSvJyuekeqqzqOOlsLR48eLI2+rkrV+/3h1jkTdDepJNniIp6hJXSFynLSZbPLUj+szXrVv3tPuU6RVk6vvnXUaqZ6Y9NTOYaMr5AF+qVClr0KCB82nUqJEL4npRp04d956ukX/99de2evVq91oncKXGjRtHRpVqYI3AC0t79uxxJ3x9sJ555hkrX7687d+/v8DUvrY71XIFYU3tRqc1a9aY/iWTVO9gpiKZfNK9rS51HD582PsPfM2aNd0lGLV5Yem73/2um6XRMs0WNW3aNOk2LKyc070XjOCiL0GdbptMLJeRPp/btm3LRPHFLlMnedVTx6jPSeeuqlWr2oYNG3yupqubOnWaQfU5aQBXv379jHyGo10qVqwY/TKu5zkf4HXtXdfCFdBXrVpl3bp1s6+++soFXEnpRjl9MDQ1r5H0p59+6gDXrl3rAo56mRqJaaQemz744APXedCJdNq0afbAAw+4VR566CG3rYK6tlcPrLDlsfnxOrsF7r77bmvRooXrLOrmy2RnYLJbg9ojgECmBXI+wCvIjh071o3GdcJVQNed8EFq06aNm6Z//vnnXSDu3r27W6Te25NPPmkK3r17945cf9O1VV1v13VzBf0bbrjBKlSo4KZxXnzxRfe+XquzoMsCK1eudJ0GjaZjl9erVy+oBo85IKCRnjqKJAQQQMAHgbyTI0y/L3wmqfTggw/ab37zGze9pqngopKm30qXLu0Wa1r75ZdftjvvvNONwIMpz6K2Dd7XlFPs9UTdOS9idRgKWx5sG/uo6fnoO/hjlxfnNVP0xVEq/jqnm6Ivfk7pXTM4XpmiT40zU/SpcYzOJZum6IPLt9H1D/O5puh17kkk5fwIXqNpfUBPFdwFFwR3Pdf6upauoBxPig3u2lYzCEEqbHmwjEcEEEAAAQRSKfB/0SeVuXqU1y9+8Yu4a6MbVW699da4t2MDBBBAAAEEfBHI+QDvCzT1QAABBBBAIEwBAnyY2pSFAAIIIIBASAIE+JCgKQYBBBBAAIEwBQjwYWpTFgIIIIAAAiEJEOBDgqYYBBBAAAEEwhQgwIepTVkIIIAAAgiEJECADwmaYhBAAAEEEAhTgAAfpjZlIYAAAgggEJIAAT4kaIpBAAEEEEAgTAECfJjalIUAAggggEBIAgT4kKApBgEEEEAAgTAFCPBhalMWAggggAACIQkQ4EOCphgEEEAAAQTCFCDAh6lNWQgggAACCIQkQIAPCZpiEEAAAQQQCFOAAB+mNmUhgAACCCAQkgABPiRoikEAAQQQQCBMAQJ8mNqUhQACCCCAQEgCBPiQoCkGAQQQQACBMAUI8GFqUxYCCCCAAAIhCRDgQ4KmGAQQQAABBMIUIMCHqU1ZCCCAAAIIhCRAgA8JmmIQQAABBBAIU4AAH6Y2ZSGAAAIIIBCSAAE+JGiKQQABBBBAIEwBAnyY2pSFAAIIIIBASAIE+JCgKQYBBBBAAIEwBQjwYWpTFgIIIIAAAiEJEOBDgqYYBBBAAAEEwhQgwIepTVkIIIAAAgiEJECADwmaYhBAAAEEEAhTgAAfpjZlIYAAAgggEJIAAT4kaIpBAAEEEEAgTAECfJjalIUAAggggEBIAgT4kKApBgEEEEAAgTAF8sMsLNvLmjJlis2ZM8dKlizpdqV27dp27bXXWqVKlbJi19auXWvLli2zCy64wCpXrpwVdaaSCCCAAAKJCeR8gD948KCVLVu2gM7Ro0ftxIkTVqpUqQLvx744fvy45eXluX9aduDAAbv00kutc+fObtV3333X3n77bbvuuuvca+Wbn/9v0tht3Qon/zty5Mhpyw3WTeXjtGnT7I477nDln3XWWfbmm29arVq1UlkEeSGAAAIIeCSQswF+//799uyzz7qR6vbt2+3mm292Ae1vf/ubC3I7duywVq1audHshAkT7Ec/+pFrlkcffdTuvvtumz17tq1YscIUtDt16mTt27f/RrPVqFHDdu7caR9++KF98MEHtnv3bhdEP//8829s+/jjj1u5cuWsRIkSrk4DBgyIdBx27dplo0aNKpB///79rWbNmgXei/eFOjDVqlUzdTbGjRvn9lt5bNq0yWbMmGF33XVXvFmmZX2ZqMOlfz4neZYuXdrKly/vczUjx5XvnuoMqwOtDqfPKejk63Pkc9LnSMeo754yVF1991Q9fTg+Dx8+rKoklHI2wK9fv97KlCljCpQKvEoK+q1bt3YBe8+ePfbYY49Znz59TMFeyzZv3mx169a1Y8eO2ZIlS2zw4MHuIHz66acjAf6jjz6y1atXuzw3bNjgAvqaNWtcIFXHQPkUtu3evXvdSL9hw4b23HPP2dKlS10HQ/VS4L/05MxAdNLBrzomk3QCVX00a6DLCdFJnZNk84/OL5nnqqc6Ur4nXYpRPTWT43PSyVPJ9xOoOkq63OXLcXiqNs2GY1SdT7V9NniqI6Lzks9Jlpr9zbSnjr1EU+JbJlpiSNs1bdrUmjdvbk899ZQLoP369bPq1au74Dxv3jw3ig5GOB07drT58+fbunXrXPDXdept27bZ8OHDXW11Ego6Cc2aNXPBXh8mBUkdqArwQa+5qG21XoMGDVx+jRo1si1btkQCvPL69re/XUBGeSo4J5OqVKlihw4dMl2m+NnPfuZG7up89OzZ07p27Zp0/snULXpbdcTUSw3aI3qZT88VkFTPZNsl3fsUnBB87zSpnvpc+O6pUZzqmcxIKt1trvz1+dFgwXdP1VWBU+cln5PO+zLNtGfFihUTZsrZAL9x40Y3ar3vvvvcFPr06dOtTZs27kOqkbmmxR966CEH16FDBxt1copcB5xumlOPTcFx0KBBbhSka+0VKlRw6yqoK0DHpmDU1KRJk0K3VW9VU+N16tSxVatWWbdu3WKzSOvrqlWrmmYiSAgggAACZ4ZAzgZ43UD2+uuv2yeffGK6Bn/VVVe5gD958mR76aWX3DS8RmQa4aqHpB6lRufqresOc03l6xq+pjlbtGgRuXP+dIdFUduqAzB27FiXj+qm2QUSAggggAAC6RLIOzkF4fedTUnuuQK4psAVuIOka6iayjpd0rV4peDP4k63fvTy2G0ffPBB+81vfuNmEDQlfbqkKfogj9OtW9Ry3U+g+wt8nwrLlil63fSo4ynT1+SKau/g/WyZoldnWFPfuhzmc8qWKXqd0zRTp3uDfE/ZMkVfv359d1k3k54agCZ6w3XOjuCDBiksmBYnuGv7RAJ7UG7stpri14misPoE2/CIAAIIIIBAqgT+fbttqnIjnyIFfvGLXxS5jAUIIIAAAgikWoAAn2pR8kMAAQQQQMADAQK8B41AFRBAAAEEEEi1AAE+1aLkhwACCCCAgAcCBHgPGoEqIIAAAgggkGoBAnyqRckPAQQQQAABDwQI8B40AlVAAAEEEEAg1QIE+FSLkh8CCCCAAAIeCBDgPWgEqoAAAggggECqBQjwqRYlPwQQQAABBDwQIMB70AhUAQEEEEAAgVQLEOBTLUp+CCCAAAIIeCBAgPegEagCAggggAACqRYgwKdalPwQQAABBBDwQIAA70EjUAUEEEAAAQRSLUCAT7Uo+SGAAAIIIOCBAAHeg0agCggggAACCKRagACfalHyQwABBBBAwAMBArwHjUAVEEAAAQQQSLUAAT7VouSHAAIIIICABwIEeA8agSoggAACCCCQagECfKpFyQ8BBBBAAAEPBAjwHjQCVUAAAQQQQCDVAgT4VIuSHwIIIIAAAh4IEOA9aASqgAACCCCAQKoFCPCpFiU/BBBAAAEEPBAgwHvQCFQBAQQQQACBVAsQ4FMtSn4IIIAAAgh4IECA96ARqAICCCCAAAKpFiDAp1qU/BBAAAEEEPBAgADvQSNQBQQQQAABBFItQIBPtSj5IYAAAggg4IEAAd6DRqAKCCCAAAIIpFqAAJ9qUfJDAAEEEEDAAwECvAeNQBUQQAABBBBItUBWBvjt27fbSy+9FJfFU089VeT6Bw4csPnz5xe5XAsmTZpkf/zjH23YsGE2atQo0zZKixYtsj179rjnhf13uuWFbcN7CCCAAAIIJCvgZYA/evSonThxosC+HTp0yI4fP+7e0+Pu3bsjy7WutjlV2rVrV4HFBw8ejLzetGmTffbZZ5HXenLs2LHI63Xr1rnlQ4cOtfvuu89q1apl7733nls+c+ZMO3z4cGTd6HrqzejlqreW+5T2799vgwcPtgsuuMB+9rOfWbSLT/WkLggggAAC8Qnkx7d6+td+8803bcWKFVaqVCm79NJLrUGDBjZ69GgrV66cbdiwwXr37m3169ePVGTBggU2YcIEq169ujVs2NA6dOhgr776qg0aNMitoxH3/fffH1l/2bJl9tZbb1nFihVt8+bN9uMf/9gF4eXLl9vChQutbt269vbbb9uRI0esbNmy1q9fPytTpowbpWudZs2aWY8ePdzyVatW2dq1a+0f//iH9e/f/xv1rFKlSmT55ZdfbuPHj7eqVau6IHrXXXdZyZIlXb0U9D/99NNIHfVE+63yk0klSpRweQTlFJbXiBEj3P5qmezPP/98F/ALWzdd76mt9S+2U5eu8hLNNz//3x+XoKOZaD7p3i5o7+hOarrLTCT/0qVLu89AhQoVEtk8tG3y8vJcPXWM+pxUP33mffeUoeoaHKe+mspSbZ9pT9Uj0eRVgF+/fr0pAN9zzz2mkeXcuXOtUqVKLqC2bNnSFMw1lR4d4MeOHWu//e1vXRDWNLpOatEn4OjnQtq7d68NHDjQqlWrZq+99potXbrUunTp4oJLu3bt3HudO3e25s2b2+zZs90UfMeOHW3AgAE2bdo0F8QV5Pv27Wtnn322C8TXXHONaYZAgT+6nrfccktk+UcffWRt2rQxBXp1YDTqV6dFSQFe+xadGjVqlPSBpQ+QOgk6kRaVdu7cWWCR9iPsA1oHcGw7FaiUJy8U4FXXZD5wYeyKTkpK2dBhkmXYx1sibSBT3z2DYzMbPFXXU52XEmmjVG8TfI4y7Rk9QxzvPnoV4Lds2WKNGzd2+1C+fHm75JJLTNfbJ06caJMnT3a9vuiTqzoBlStXdsFdGyl4bt26tYBBbOBQvmPGjDGdrHUdXdPt0enLL780TdmrPH2gFei3bdtmtWvXtttvv911ID788EMX6IcMGRLZVDMCRdVTK3Xt2tXNHGhGQcFb/4KkfdBMQnRas2aNm2GIfi/e55qNUAA/1bS7Oify2LFjh9WoUcP69OmTdLnx1lMzJDqIfT+B1qxZ03XGTnXPRbz7no71g5mG0122SkfZ8eSp414jOX2+fE460aueyZxow9g/DRg0Q6iZSd+TBh6nOi/5UH8NkDSYzLSnYkuiyasAr2A6ffp0ty8K3m+88Yabxmnbtq1deOGFNm/evAI3wylY62SmD556gy+//LJddtllbvSvTDQajb3mren7O++8003pv/LKK27kqE5DEFw0OtdIvlWrVqYpeU3Vf/XVV7ZkyRK76aabXH1atGhhCvJKQc9+ypQpVlg9g+WamdBMgab8Ve7ixYtNMwOZTtrf999/39Sxad26tZsxyXSdKB8BBBBAIHkBrwK8pkI0xa3rwhp9XHryGrwCpK6xK0AqmEffXKfd7969uz3//PNumUbFGmmrJ/vMM8+4kb1GCdFJ1+g1ra/OgYK/HnX9fuXKlTZr1iy7+OKL3Uhbz9XJuPnmm90UopZr9K3elLa7/vrrXba6Vj5y5Ejr1auXu9M+tp7Bcq0/btw4N+OgfdD6viQZ+dDZ8MWDeiCAAAK5IJB3cuRa8HZ1D/ZKwT24nqTqaJpd753qmo1G2ppGC5Km34Nr3MF7waNG/Jp+ib7JQ2WIIngvmBUIttGj1tG0kjoF0Skou6h6Bsu1zanqFZ2npuiTvUlKU/Saevd9Kowp+uiWT/45U/TJG0bnkG1T9LoZ2feUTVP0q1evziinBpW6PJhI8moEH+xAcIIKXhfnhozo4K7tigruWlZYRyH62v6p1okN7lo3KLuoegbLte6p6qXlJAQQQAABBFIhkPj996konTwQQAABBBBAIC0CBPi0sJIpAggggAACmRUgwGfWn9IRQAABBBBIiwABPi2sZIoAAggggEBmBQjwmfWndAQQQAABBNIiQIBPCyuZIoAAAgggkFkBAnxm/SkdAQQQQACBtAgQ4NPCSqYIIIAAAghkVoAAn1l/SkcAAQQQQCAtAgT4tLCSKQIIIIAAApkVIMBn1p/SEUAAAQQQSIsAAT4trGSKAAIIIIBAZgUI8Jn1p3QEEEAAAQTSIkCATwsrmSKAAAIIIJBZAQJ8Zv0pHQEEEEAAgbQIEODTwkqmCCCAAAIIZFaAAJ9Zf0pHAAEEEEAgLQIE+LSwkikCCCCAAAKZFSDAZ9af0hFAAAEEEEiLAAE+LaxkigACCCCAQGYFCPCZ9ad0BBBAAAEE0iJAgE8LK5kigAACCCCQWQECfGb9KR0BBBBAAIG0CBDg08JKpggggAACCGRWgACfWX9KRwABBBBAIC0CBPi0sJIpAggggAACmRUgwGfWn9IRQAABBBBIiwABPi2sZIoAAggggEBmBQjwmfWndAQQQAABBNIiQIBPCyuZIoAAAgggkFkBAnxm/SkdAQQQQACBtAgQ4NPCSqYIIIAAAghkVoAAn1l/SkcAAQQQQCAtAgT4tLCSKQIIIIAAApkVIMBn1p/SEUAAAQQQSItAflpyzcFMJ02aZB999JHl5eVZvXr17LrrrrNy5crZokWL7Oyzz7ZKlSoVutenW17oRryJAAIIIIBAkgI5O4I/cuSIHT16tADP8ePH7dChQwXeK+rFsWPHIovWrVtnn332mQ0dOtTuu+8+q1Wrlr333ntu+cyZM+3w4cORdZW/yglS9PJ4yg+2T+bx448/tgcffNDeeOONZLJhWwQQQACBLBTIyRH89OnTbf78+Zafn28NGjSwPn362Pvvv28LFy60kiVLusA/ZMgQe/755+2KK65w68ydO9e2bNliHTp0sLffftvUQShbtqz169fPypQpY3v27LHly5dbs2bNrEePHm75qlWrbO3atfaPf/zD+vfvb6NHj3aj+g0bNljv3r2tSpUqkeWXX365jR8/3qpWrWoHDx60u+66y9UlXcfMl19+ab169Yp0crRvt99+e7qKI18EEEAAAc8EcjLAL1iwwLp3726tWrVyQV3mJ06csMGDB7vHJ554wrZu3WodO3Y0BXZ1AjTavfbaa23GjBnWuXNna968uc2ePdtNwWu9AQMG2LRp01wQV5Dv27evm5rXttdcc43t2rXLBf6WLVuaylcH45ZbbnF5a7mm99u0aWMK9CtWrHCjfk3xK6ku//3f/+2eB/898MADVrt27eBl3I8atUfPYKj83//+93HnwwYFBSpUqGDVq1cv+CavkhKoWLFiUtuzcUGBxo0bF3yDV0kJZNpz7969Cdc/JwO8gu8777xjY8eOtfPPP9/at29vJUqUsGeeecbKly9v+/fvN03Bn3vuuTZhwgQXnBUMa9asaRr5btq0ySZPnuw6Awr027Ztc8FWI2Bt9+GHH7pAr1mAIOkkNXHiRLddqVKlXHnBMj127drV3nrrLRs2bJg1atTI/QuWK2A88sgjwUv3qDLXrFlT4L14XqgTovsF1LFRateuXVL5xVN2vOuWLl3azYgEdY13+7DWVzvpckwyH7gw6qpZKqXoy0xhlBtvGbpvRZ+V7du3x7tpqOvrc6TZQM3q+Zw046hZQ52/fE+aFS3u5dJM7Ys+R3Xr1nWzsJmqg8pVzCrqHq/T1SsnA/znn39uN910k9v3xx57zC644AI3+taoWOmhhx5ygU8N2KJFCzd1/p3vfMctU2BUMNToX1Py+lB/9dVXtmTJEpdnsI2CvFIQRKdMmWJt27a1Cy+80ObNm+dG8NHLly1bZl26dHFT/q+88ootXrzYzSBoHXU+1IjRSQE++lp+9LLiPP/Wt77lrr2PGTPGNKtw4403JpVfccpMdB0Fdu2r7wFe+xfUNdF9DWM7HU9KyRw/YdRTltngGXzGs8EzG9pddcyWds8WT9WzsJSTAV69nREjRrhr5/Xr13d3vasn9uKLL7pRjaZZNaWuu+E7depkf/7zn10AFNDFF1/sRtqzZs1yI/2bb77ZtP7KlSvd6FsjdfU8r7/+euepKfqRI0e66926016BXL393bt3F1iu9ceNG2eVK1d2y3R9PN1JlwN0T4Gu+ZMQQAABBM4sgbyTPal/z+Hm2H5rtzSdqqmgICnQaRqrOEnbauo4OqkHrzxiR9sa5WuqUcs11R+7XbBceR04cMDdiBedb2HPNT2f7BSrOjU7duzwPsCrjeTt+6GoSzjq3OmGS5+TOphK0fdg+FhfdXb1udFslc9JI3jVU8eoz0n39OgmXt3k63vSedj3gYdmazVAXL16dUY5NajUuSeRlLN/JqcPZXRwF05xg7vWjQ3Seq+wqXS9rw+/kpYXtl2wXOsEN9bpOQkBBBBAAIF0CeRsgE8XGPkigAACCCCQDQIE+GxoJeqIAAIIIIBAnAIE+DjBWB0BBBBAAIFsECDAZ0MrUUcEEEAAAQTiFCDAxwnG6ggggAACCGSDQFIBXn+C9fXXX2fDflJHBBBAAAEEziiBhAK8vtlN39imv83T96vr8e9///sZBcfOIoAAAggg4LNAQgH+1ltvdT+wsnnzZtu5c6e9+uqr9stf/tJ9navPO0vdEEAAAQQQOFMEEgrwGsH/+te/tho1argvedEPqQwcOND0M60kBBBAAAEEEMi8QEIBXr/Opt9SD74KU79epN9Qv+iiizK/R9QAAQQQQAABBCyhAK/vZP7Rj37kRvD6yVV957l+ZrV///7WunVru+OOO6BFAAEEEEAAgQwKJPRrcg8//LD9/ve/dyN4/Ta2vgw/+IEL7Yt+k5iEAAIIIIAAApkTSCjAK4A/+OCD7vfGhwwZYpqi18+mDh06NHN7QskIIIAAAgggEBFIaIr+tttus6ZNm7pRvHLSDXcvv/yyLV26NJIxTxBAAAEEEEAgcwJxB3j9ZvfixYvt3nvvjfz8aqNGjey6666zKVOmZG5PKBkBBBBAAAEEIgJxB3j9zrquuS9atCiSyfHjx+2tt95yN9tF3uQJAggggAACCGRMIKFr8I8++qhdcskl1qRJE/d38MOHD3ffaNerV6+M7QgFI4AAAggggMD/CSQU4Pv27Wv687h//etfduTIEfetdi1atPi/XHmGAAIIIIAAAhkVSCjAb9u2zVq1auX+BbXX19aWLFnS/W188B6PCCCAAAIIIJAZgbiuwR88eND079JLL3WPwev9+/fbz372M3vzzTczsxeUigACCCCAAAIFBOIK8D179rRy5crZZ5995h71XP90092sWbP4qtoCtLxAAAEEEEAgcwJxBfj33nvPXXP/4Q9/6B51/V3/9J30a9assZYtW2ZuTygZAQQQQAABBCICcQV4/YmcrrOPHj3afTWt/iZ+xowZ9umnn0Yy5AkCCCCAAAIIZF4grgA/btw4q1evns2fP9/0t++9e/d2PxN79dVX249//OPM7w01QAABBBBAAAEnUOy76PV98/oFuZEjR9oFF1xg//jHP2zhwoX2xRdfuNG8/mzu448/to4dO0KLAAIIIIAAAhkWKPYIft68eabfge/Xr5+VKFHC3nnnHbv22mutUqVK7ka7733vezZ37twM7w7FI4AAAggggIAEih3gDxw44O6WD9gmT55sPXr0CF7azp07rXLlypHXPEEAAQQQQACBzAkUO8BrWn727NnuT+ReffVVF9A1alf6+uuvTXfYn3feeZnbE0pGAAEEEEAAgYhAsa/Bn3322fa73/3OOnXq5DYeNWqUlS5d2l555RX7yU9+YnfddZf7PvpIzjxBAAEEEEAAgYwJFDvAq4Z33323DRo0yF2DV3BX+ta3vmXTpk2ztm3butf8hwACCCCAAAKZF4grwKu6ZcuWLVBrAnsBDl4ggAACCCDghUCxr8F7UVsqgQACCCCAAALFEiDAF4uJlRBAAAEEEMguAQJ8drUXtUUAAQQQQKBYAgT4YjGxEgIIIIAAAtklQIDPrvaitggggAACCBRLIO676IuVa4ZXOnTokI0dO9ZWr15t+gU8fQHPFVdc4Z7ry3ouuuiiImt4uuVLliyxt956y/3Yjr6m97LLLrNWrVoVmd+iRYtM3yGgdcNM+qW/ZcuWue8qCP6kMczyKQsBBBBAILMC3ozgFZT1C3XRSb8zr9+bL046duxYZLU5c+ZYlSpV7De/+Y39+te/tuXLl9uXX37plk+ZMiWynp4cPHiwwOvo5cFv3Qcr6Dfv33jjDfvhD39oQ4cOtRtuuMH0rX56P0ix9Z05c6YdPnzYLdb+aT/TneR24403uu8m0O8H6HsKSAgggAACZ5aAFyN4/b68At+uXbvciPjb3/62/e1vf3PBfceOHW6ErK/KnTBhgvtFOzXRo48+6r54Z+XKlTZr1izXOWjYsKFdeeWVVr58eVu8eLGtXbvWGjRoYHfccYf7cp4PPvjAlTFx4kRr0qSJG4lXrFjRNm/e7H7udsWKFZHl+nt//Sxufn6+y6NPnz42Y8YM9/37KkepatWqrr76Fb2NGze6emi0vHfvXrvuuutMo2jVQb+8d/nll9v48ePdNupU6Jv/SpYs6fLR+q+//rp7Hvz33e9+160bvI7nUT8EpJkIJf2GwNNPP23XXHNNPFmEuq4c1PmRl8+pTJky7njwfUZEPwalFNth9s22VKlS7nNZo0YN36pWoD6aBZRp9CCiwAqevNDnSOcr3z3FpbpWqFDBE7nCq6F2179MeyZz3GU8wOskpCCtr7tVYN6wYYPt37/fWrdu7b4Wd8+ePfbYY4+ZAqyCvZYpINetW9d0wp00aZL7dj09f+GFF9w63/nOd9zJTaPrbdu2uSn6Xr16ufz0nfndu3d3wXvgwIFWrVo1e+2112zp0qXWuXNn9536Wv7UU0+59TT9rp/FVVJesY1du3Zt++ijj1wnoFy5cq4u69evd5cIfv7zn7v3FVy1Tps2bVygV0dCo3qtr6SDXfsTm2JnA2KXF/U69suI5JpoXkWVkcr3Fdg16+B7UmDXh81nSxlmS4DXca/ku6fqqLomc6JVHmEkfZaywTMbPvMK7kqZ9gzqkcjxk/EAr5PR1VdfbWPGjLF9+/a5EbJG17p+rp+o1S/UBSM7/da8RtXr1q1zwVrBXs/1vfhK6ixoJK0RcYcOHdw6Gi0rgOvX73QdPkgKeipTPV6NcmvVqhUsco99+/Z1P4mra/nnn3+++6lcraPOSKNGjSLrKlifddZZ7nXTpk3do4K1OiPRqWvXrm7GYNiwYW776DwU6Lt16xa9upv23717d4H3ivuiXbt2ps6L9k/l/Od//qclmldxy0xmPXXO1OEJ2jmZvNK5rQK8ZprU6fQ56ZhWyoZOk0bxPh+bctQJVvUMLrXpPR+TziM6Rn33lJ0GIbGXR30zVadOl3oz7alZ5kRTxq/B60OzdevWyPfc/+tf/3K/WKf3Bw8ebL179470oBS0FeAV/Js3b+5G/Aq6Cmb6jnxdb9ZrXffWiFlJB1Ljxo0jeQS9IY3udS1d29WpUycynRks//zzz+2mm26y++67z43g9XO4Kl/56lKCkt6bO3euK1evg2vx6nTUrFlTb7mTgwKXbnjr0qWL/dd//ZebedAlhHSm3/3ud65+uqxwzjnnpLMo8kYAAQQQ8FAg4yN49Tg12n3uuefcSPqSSy6xZs2auRH3Sy+95KbFNNrWyEk9GQVsLQ8CsX6TXiN45aMel37trmfPnqbr+ro2r563/qkToKTrPvoFPAVrjc6DvPUYvVyj8REjRrhgXL9+fXc9XNfcNdLWNW31ljVToGv+LVq0cIFfU/N/+ctf3AhPnQMl3QMwcuRIu/76623cuHFuRkI9Ql0ySHcKpmrTXQ75I4AAAgj4J5B3cnTpxZ1Nus6hoB1ML4pKU+fBderT0WnEryAfnZSnpu01BRyd9H4w5aZOgf5Fp2C5aJRv7PZaV9NL0de6NbLXiF5T8apH0AHRukF+el7cfdJsQLLX/IJLBb5PhWXLFL1mZZii11GcmqTLb/oc6t4Wn5M+y8H5wud66lypQYjuY/I9ZcsUvQZ3mjHOZNLANpgRjrceGR/BBxXWByg2FTe4a7vY4K73Cssz+v3Ctolerg92YcFd60QH92Ab5VfY+tH1iGeflC8JAQQQQACBRAS8CfCJVN6nbfRlOiQEEEAAAQR8Ecj4TXa+QFAPBBBAAAEEckmAAJ9Lrcm+IIAAAggg8P8FCPAcCggggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEECPAcAwgggAACCOSgAAE+BxuVXUIAAQQQQIAAzzGAAAIIIIBADgoQ4HOwUdklBBBAAAEE8n0g+OSTT+zAgQPWuXPnYlVn+/bt9s4779gNN9xQ6PobN260/fv3W9OmTQtdPmXKFJszZ46VLFnSLa9du7Zde+21VqlSpULXj33zdOXHrs9rBBBAAAEEwhYIZQR/5MiRb+zXwYMHI+8dOnTIBfjgjaNHj9qJEyeCl994PH78uO3evTvyvl4rjyAtWrTINm/eHLx0j8eOHYu8Vmfi0ksvtaFDh7p/9evXt7fffjuyvLAnyl/lKMWWX9j6ei+6TL2OrafeIyGQzQL/+te/rF+/fjZkyBBTx5qEAAL+CKR1BL9lyxb73//9X6tWrZobLd9yyy22YsUKe+utt6xixYouCP/4xz8uoPHmm2+6dUqVKuWC8J49e9xovFu3brZ27VrT6Pv73/9+ZJv333/fFi5c6PJXx+COO+6wefPmWX5+vhvBb9u2zWbNmuWCa8OGDe3KK6+MbBs8qVGjhu3cudOUV15ennXt2tV27NhhL730kt100002evRoK1eunG3YsMF69+5t6hAEadiwYXb//fe7l88995xbrjzUYVDHpmzZsu4EqJPf+PHjrWrVqqbOzV133RWZQdB6X3/9dZCle9R2ZcqUKfBevC9KlChhcjxVZynePNOxvuooM9/rKU8dV8m2SzoMo/MMZqaCx+hlqXy+atUqu/vuuyMdWc2avfjii8UuQpaqo++eOjZVVz36nILPke+eMsyG85I+70qZ9kzmuEtrgH/99dddwGvdurV9/PHHpqntvXv32sCBA13Qf+2112zp0qUWQK5fv96WLVtm99xzjwvqc+fOdQdCMHJWAAieO/mT/+m9wYMHu8cnnnjC5X/BBRe46XZNvb/yyis2aNAg10gvvPCCC9za9qOPPrLVq1e7mQAFbnUMKleubCNGjHABXmV36NDBdu3aZT169LCWLVvaggULbP78+QUCfHR9ghH7zJkz3eWG5s2b2+zZs00zClu3brU2bdrY5Zdf7jowhw8fdp0G1UUmY8eO1dNIuu2226x69eqR14k80clT++R74MyG4C5/eZYuXTrSbom0SRjbBCeEdLe7PgvBMa/9UsBXZ7m4SZ971TWebYqbd6rXy4ZjVHXUMYpn6lrfh+NTM86JprQGeAW1xo0bu7p17NjRPWpEPWbMGNcjVsVr1aoVCfAa8Qfrly9f3i655BJ3rTzYucJOWDpJPPPMM6b1NYKIPuHo9bp162zUqFEuCwXjYBqxWbNm1r59e3fC1gdCPUolXYfX9L6CuaYd9+3bZxMnTrTJkye7dYLOiFv55H/RdQqef/nll7Zp0ya3jd5ToNesgGYuNOJv1KiR+xfkoRmOYBYgeG/NmjWmDk8yqW7duq5DE305JJn80rWtesjq8AR+6Son2Xxr1qzpLgVpVsnnpNGmkma00pmaNGniZslWrlzpirnmmmviOmbV+dTnTucEn5NO8qqnjlGfk2YZNUOoAYvvSTOUvp+X1FnSbG2y5+Fk20Kz3YmmtAb4Fi1amAKVRr+aWtdNb6+++qrdeeedbnSq0XX0CFiBcPr06W5fFJzfeOMNUyDWc6XY6+oKvtOmTbMHHnjALX/ooYdckFAQVrBQ0FcHQjMGOqB0Y51e64SkoK5AG5s6depkukxQp04dN+pXHdq2bWsXXnihm/rXqCU6qRx98HVSVYdGSXVu166dtWrVypYvX+6m6jUz0aVLFzddr/1evHixBZ2e6Px4jkC2CCig/POf/7SpU6faWWed5T4j2VJ36onAmSCQ1gCvu+IVLDVlrd7QpSdvbNO0t6ajFXx141oQhIVdoUIF1xnQNLlGH1pfPahJkya5EbGmR6OT1tcoVdf9NHLXa02p16tXz8aNG+eWaXp91MkRvLZVHRTAT5U0ja4ZBk2RKym4T5gwwV06UBCPvrlPyxX4n3zySTfyVydC6eKLL3ajdV37V+fk5ptvdtPwqpNGLcqjV69ebl3+QyCbBTTjpftSSAgg4J9A3skRaNG3q6eovrqJLJgCV5Ya8SrY6l9hScFdo/BgOlxVVGcgCKCx22iqJ3aZ8lD+ml5TUpmxHYTYfIp6rVkG5VfU9qqb9i+ob5BPYWXqsoRGPqdLmvmIvtxwuvULW84UfWEqib/HFH3idoVtyRR9YSqJv8cUfeJ2hW2p+KEBpu7VymTSFL3OPYmktI7ggwpFB3e9V1SgDNYPriEGrxWkYwN4sEyPhS2LzeN0ZUbnF/tcgftU2xd1l2Vh2xQnuMeWz2sEEEAAAQTiFSgR7wasjwACCCCAAAL+CxDg/W8jaogAAggggEDcAgT4uMnYAAEEEEAAAf8FCPD+txE1RAABBBBAIG4BAnzcZGyAAAIIIICA/wIEeP/biBoigAACCCAQtwABPm4yNkAAAQQQQMB/AQK8/21EDRFAAAEEEIhbgAAfNxkbIIAAAggg4L8AAd7/NqKGCCCAAAIIxC1AgI+bjA0QQAABBBDwX4AA738bUUMEEEAAAQTiFiDAx03GBggggAACCPgvQID3v42oIQIIIIAAAnELEODjJmMDBBBAAAEE/BcgwPvfRtQQAQQQQACBuAUI8HGTsQECCCCAAAL+CxDg/W8jaogAAggggEDcAgT4uMnYAAEEEEAAAf8FCPD+txE1RAABBBBAIG4BAnzcZGyAAAIIIICA/wIEeP/biBoigAACCCAQtwABPm4yNkAAAQQQQMB/AQK8/21EDRFAAAEEEIhbgAAfNxkbIIAAAggg4L8AAd7/NqKGCCCAAAIIxC1AgI+bjA0QQAABBBDwX4AA738bUUMEEEAAAQTiFiDAx03GBggggAACCPgvQID3v42oIQIIIIAAAnELEODjJmMDBBBAAAEE/BcgwPvfRtQQAQQQQACBuAUI8HGTsQECCCCAAAL+CxDg/W8jaogAAggggEDcAgT4uMnYAAEEEEAAAf8FCPD+txE1RAABBBBAIG6B/Li3OAM3GDVqlG3bts1Klixpx44ds8qVK9u1115rVatW9VZj165d9u6771qlSpXsoosu8raeVAwBBBBAID0CORvgDx48aGXLli2gdujQIStVqpSVKHHqiYvjx49bXl6e+6cMdu/ebTfccIPVqVPHtGzy5Mn29ttv24ABAyL5K/CrAxCdYt/TtkeOHLEyZcpEr5by5/v377fevXvb6tWrXd6DBw+2X/3qVykvhwwRQAABBPwVyLkAr+D27LPPulH29u3b7eabb3YBdfTo0VauXDnbsGGDC347duxwAbxr166m5y+99JL99Kc/talTp9qKFSvs6NGj1qlTJ2vfvn2B1lPnQPkEnYfPP//cZs2a5QJ/w4YN7corr7S1a9faiy++aLVr13Yj/hYtWtjZZ59t48ePd6N+dT7uuuuuSIdA5T/55JMFyhk0aJDrUBR4s5gvpkyZEgnu2uTNN9+0J554ophbh7+aOlMnTpwIv+A4S1QHTm2vGRyfkzyVfDfVZ0l1DT5Lvpv67ilLmdavX99nSle3bPnMq56Z9jxw4EDC7ZlzAX79+vUuoPfv39+NvCWj6eoePXpYy5YtbcGCBTZ//nzr27evjRgxwhTg586dax06dDB1DpYsWWIa8Wq0/fTTT0cC/PPPP+8+PMJu27atde/e3aFPmjTJFIw1Kn/hhRdcZ+G1115zI34FfAV65aWOQJs2bezyyy93HYjDhw+7YKFMNI1+6623uvyC/9TB2LJlS/Ayrsfq1au7mQrNFiipg5FoXnEVnODKpUuXdjMbvp9AdUlGpvv27UtwT8PZLJhJ0gySz6lChQqWn5/vPp8+11MnedUz+Dz5Wledg3Qu2bp1q69VjNRLn3mdA31O6ixpkJbpc2cyM745F+CbNm1qzZs3t6eeesoF0H79+lnFihVt4sSJbmo9mKLXB0H/Nm/e7IL+kCFD7IsvvnDX2ocPH+6OO50oNT2vdNttt7nGfv31193oXqM4dQjWrVtnukavpEC+ceNG08xBvXr13HuNGzd2JwZ1JN566y0bNmyYNWrUyP1zK5z8TycPvRed1qxZk/AHoFatWvbXv/7VxowZYwr2mp73+cOkE6jq53uAV/uq4+WzpY4hHU9KqqvPSSN3nUR99wxGm77XU+crfYZ8r6eOyWxo96CjnGlPdYYSTTkX4BVg1eu677777MMPP7Tp06e70axG3RdeeKHNmzfPjeAFpil4TV/r2rp6SU2aNLEqVaq4EblO5rpJTaOMIOmg7NOnj/35z3+OjPoVTAcOHOimGefMmWN63axZM/vqq69cR2P58uWmIL9s2TLr0qWLqcPxyiuv2OLFi61jx45B1il/7Natm5tF0PS/LgmQEEAAAQTOLIGcC/AKsBplf/LJJ24kfdVVV7kR9IQJE1yQ1egmGJVrylyjXI3OlTQqb926tbuGrwCvqe2gFxccFgryurnuL3/5i51zzjlu6l8jePWytK46Dboc8M4779j777/vylaZqte4ceNcGSq/V69eQZY8IoAAAgggkHKBvJNTOv7f3ZTAbuuOeQVdTa8pBdOrxZnuCK5dxgb3U1VD0zhB3rrGr86BLg0oqJ977rmuM6DtdQ1fN2qdLmmKPqjH6dYtanndunXdPQG+j+A1eyI/3w/FmjVrmo6rPXv2FEXuxfvZMkWvDrUumelPUH1OOoeonpmeqj2dkc4ruk9ENxL7nnR5xvfzks7/usEu+GukTJkqjujck0jKuRF8gBB7Y4JG3kEADtYp6jGewB7kEZ23ru3r5joFLH3gdHNfkIoT3IN1eUQAAQQQQCBRgZwN8ImCpGI73eSnfyQEEEAAAQQyJXDqb3zJVK0oFwEEEEAAAQSSEiDAJ8XHxggggAACCPgpQID3s12oFQIIIIAAAkkJEOCT4mNjBBBAAAEE/BQgwPvZLtQKAQQQQACBpAQI8EnxsTECCCCAAAJ+ChDg/WwXaoUAAggggEBSAgT4pPjYGAEEEEAAAT8FCPB+tgu1QgABBBBAICkBAnxSfGyMAAIIIICAnwIEeD/bhVohgAACCCCQlAABPik+NkYAAQQQQMBPAQK8n+1CrRBAAAEEEEhKgACfFB8bI4AAAggg4KcAAd7PdqFWCCCAAAIIJCVAgE+Kj40RQAABBBDwU4AA72e7UCsEEEAAAQSSEiDAJ8XHxggggAACCPgpQID3s12oFQIIIIAAAkkJEOCT4mNjBBBAAAEE/BQgwPvZLtQKAQQQQACBpAQI8EnxsTECCCCAAAJ+ChDg/WwXaoUAAggggEBSAgT4pPjYGAEEEEAAAT8FCPB+tgu1QgABBBBAICkBAnxSfGyMAAIIIICAnwIEeD2MGEQAABYbSURBVD/bhVohgAACCCCQlAABPik+NkYAAQQQQMBPAQK8n+1CrRBAAAEEEEhKgACfFB8bI4AAAggg4KcAAd7PdqFWCCCAAAIIJCVAgE+Kj40RQAABBBDwU4AA72e7UCsEEEAAAQSSEiDAJ8XHxggggAACCPgpQIBPol0OHDhg8+fPLzKH0y0vckMWIIAAAghktcDRo0ft2LFjGd2HMyrAHz9+3A4dOvQNcDVCYQ1x+PDhQtcN3ty0aZN99tlnwUuLzT92uVYsrJxIBjxBAAEEEMh6gTFjxljbtm2tXbt2Nn78+IztT96JkyljpYdY8Pvvv28LFy60kiVLmnpWQ4YMsXnz5tncuXNdYN6xY4ddffXVVq9ePRs5cqSVLVvWDh48aOecc4717NnTFi1aZFOnTrXSpUtb/fr17Qc/+IG9+OKLtmzZMuvbt69t3779G/m//PLLkeWlSpWyWbNmubIaNmxoV155ZWTv9+/fbzNmzIi81pNzzz3XypcvX+C9eF9UqlTJNIug/fU55efne19H+ak91EErrJPok2+JEv/ut6vD6XMqU6aM+zzq+Pc96bzhe+dcn6Ny5crZnj17fOe0bPjM5+XlWZUqVWznzp1xeep4btKkiR05csRtp1iyatUqFzviyihq5WrVqkW9Kv7T/OKvmt1rqh8zePBg0+MTTzxhW7dudc+1V3p/+fLlNnPmTOvTp49p5P3www+7Hf7DH/7gAvzkyZPdegrUI0aMcOt06dLF5aFemoJ/bP7Ry5988kkbNGiQ6aT2wgsvmDoUQaOpTrt27SoArINLJ5VkkvLQyT7ZfJKpQ3G2zYY6aj+yyTOob3H8M7WO2j0Vx3kY9ff9MySDoGOXLXX1vZ46NpUSqWf0oCoI9Inko/KT6aifMQFeB/8zzzzjRmHqYQW9cfW0lCpUqBAZRTZq1CjSqOpp7t69262j4K6kbb788kvTekEqKn8tV3nr1q2zUaNGudXVYBs3bowEeJXdv39/tyz4b82aNW5WIHidyKM6E+rNaybC56R66nKI75NJNWvWdKN330dIOmaVok8yPrZ/5cqVTZ8pzX75nHSiVz0Lu2TnU701elfb++4ps2CG1Ce/2LooIOvcnIjnL3/5S3v88cddB/bXv/61m0nVbGoiqWLFiols5rY5IwL8vn37bNq0afbAAw+4nX7ooYciwSTo9UYLxr6nE5E+3OqJ6YO+6uR0S+fOnV2PWUGpqPyVj5ZrardWrVo2cOBAd2DPmTPHvY4uk+cIIIAAArkhoNncAQMGuABftWrVjO3UGRHg1QurW7euu2aukbtex06Jn64Funfv7qbmNfquXr26tWrVyo3MV65caZ9++mmh+etau5br2nuPHj1s1MkRvK7hq2fYqVOn0xXJcgQQQACBLBUILsFmsvpnzE12QtZUtaaGkkkayStIB0kBX6N0Be3C8o9erm1itw/yiX3UFH1wGSF2WXFfq1Oja/1M0RdX7NTrMUV/ap94lwZT9Nu2bYt301DXz6Ypeo0WN2zYEKpPIoVlyxS9bqhevXp1IruYsm00Ra9zTyLpjBjBBzDJBnflEx3c9Tp6Or+w/KOXF7a93iMhgAACCCCQaoEz6u/gU41HfggggAACCPgqQID3tWWoFwIIIIAAAkkIEOCTwGNTBBBAAAEEfBUgwPvaMtQLAQQQQACBJAQI8EngsSkCCCCAAAK+ChDgfW0Z6oUAAggggEASAgT4JPDYFAEEEEAAAV8FCPC+tgz1QgABBBBAIAkBAnwSeGyKAAIIIICArwIEeF9bhnohgAACCCCQhAABPgk8NkUAAQQQQMBXAQK8ry1DvRBAAAEEEEhCgACfBB6bIoAAAggg4KsAAd7XlqFeCCCAAAIIJCFAgE8Cj00RQAABBBDwVYAA72vLUC8EEEAAAQSSECDAJ4HHpggggAACCPgqQID3tWWoFwIIIIAAAkkIEOCTwGNTBBBAAAEEfBUgwPvaMtQLAQQQQACBJAQI8EngsSkCCCCAAAK+ChDgfW0Z6oUAAggggEASAgT4JPDYFAEEEEAAAV8FCPC+tgz1QgABBBBAIAkBAnwSeGyKAAIIIICArwIEeF9bhnohgAACCCCQhAABPgk8NkUAAQQQQMBXAQK8ry1DvRBAAAEEEEhCgACfBB6bIoAAAggg4KsAAd7XlqFeCCCAAAIIJCFAgE8Cj00RQAABBBDwVYAA72vLUC8EEEAAAQSSECDAJ4HHpggggAACCPgqQID3tWWoFwIIIIAAAkkIEOCTwGNTBBBAAAEEfBUgwBezZQ4cOGB/+MMfbNmyZcXcgtUQQAABBBDInEDOBviDBw9+Q/XQoUN2/Pjxb7wf+4bWOXHiRIG3P/nkE2vRooXNmDGjwPt6cezYMfcvdsHhw4dj3yp0vW+slII35s6da7fddps99NBDtnfv3hTkSBYIIIAAAtkkkJ9NlS1OXffv32/PPvusVa5c2bZv324333yzlSlTxkaPHm3lypWzDRs2WO/evW3Hjh2Wl5dnXbt2dc9feukl++lPf2pTp061FStW2NGjR61Tp07Wvn17V+wHH3xgt99+u/31r3+13bt3u/w//vhjUyBVh0D5XX311VavXj0bOXKklS1b1tTJOOecc6xnz562aNEil3fp0qWtfv369oMf/CCyO9peecamkiVLxr5VrNcbN260G2+80dShUVqzZo39z//8T7G2zcRKJUqUMO1rbKcqE3U5VZk6XoK6nmq9TC9THZUSPX7Cqr/qKVPf60m7p/6IyIbPUXBcBo+pV0h/jjkX4NevX+8Cev/+/SNBc9euXdajRw9r2bKlLViwwObPn299+/a1ESNGuACvIN2hQwdT52DJkiU2ePBgF7SffvppF+DVKVDArlq1qltv9uzZdsUVV0QCktZfvny5zZw50/r06WObNm2yhx9+2LWepvUV4CdPnuzyLVWqlCtX65x11lluHXUOhg0bVqC17733Xqtdu3aB94r7QvsYBHdts3DhQtepKO72rFe4gE706iRWqVKl8BV4N24BmZYvXz7u7digcAF5agBBSo2AD57JzMDmXIBv2rSpNW/e3J566il3Mu7Xr59VrFjRJk6c6IKsAqx6j5UqVXL/Nm/e7IL+kCFD7IsvvrBt27bZ8OHD3dGhnptG1nPmzHGzAcpTgXPPnj3WvXt3t06TJk3cY4UKFdyoXy8aNWoUGZXk5+dHOhoqW0nbfPnll5EAX6NGDfvTn/7klgX/adS9evXq4GVcjw0aNLDq1au7OmvDSy65JOG84io4wZU1w6LLGb6P4GvWrBlp/wR3NZTNdMwpaRbK56RZNn0m9JnzOekkr3oWdsnNp3qr86lBiAYkvqdghtPneur8r85SoufhVO2b4leiKecCvKanNfK977777MMPP7Tp06e7D2fbtm3twgsvtHnz5rkRvMA0Bf/mm29anTp13KhfgVejs0GDBrkR/LvvvutG7hoBKz8FIiV1ABYvXuyeB9Oh7sX//y/2PZ3IdHI4cuSIq8uqVausc+fO0Zuk9Lk+5K+//rq99957Vq1atQKXA1JaEJkhgAACCHgrkHMBvlatWi646aY4XYO/6qqrXGCdMGGCuwM+ekTdpk0bGzNmjLsZTS2kQNy6dWt3DV/XxXVTnabsNSsQBHet9x//8R9uOv6CCy7Qy2Iljfh1SUD5anTdqlWrYm2X6EoaxatToun/wm44TDRftkMAAQQQyA6BvJPTogVvF8+Oep+2lppK1w1tml5TUmDVlKXeO13SXfFK6bi5QiP54tRBU/RBPU5X36KW161bNysCPFP0RbVgYu8zRZ+YW1FbMUVflEzi7zNFX3w7TdHr8mAiKedG8AFC9Ihb72navDiBVeumI7ArX6Xi1uHfa/M/AggggAACiQnk7N/BJ8bBVggggAACCOSGAAE+N9qRvUAAAQQQQKCAAAG+AAcvEEAAAQQQyA0BAnxutCN7gQACCCCAQAEBAnwBDl4ggAACCCCQGwIE+NxoR/YCAQQQQACBAgIE+AIcvEAAAQQQQCA3BAjwudGO7AUCCCCAAAIFBAjwBTh4gQACCCCAQG4IEOBzox3ZCwQQQAABBAoIEOALcPACAQQQQACB3BAgwOdGO7IXCCCAAAIIFBAgwBfg4AUCCCCAAAK5IUCAz412ZC8QQAABBBAoIECAL8DBCwQQQAABBHJDgACfG+3IXiCAAAIIIFBAgABfgIMXCCCAAAII5IYAAT432pG9QAABBBBAoIAAAb4ABy8QQAABBBDIDQECfG60I3uBAAIIIIBAAQECfAEOXiCAAAIIIJAbAnknTqbc2BX2IlbgiSeesB/84AfWvHnz2EW8TkDglVdesQYNGliXLl0S2JpNYgXef/9927Jli1177bWxi3idgMAXX3xhkyZNsiFDhiSwNZvECuzatcseeeQRGzZsWOyirHnNCD5rmir+ih4+fNiOHz8e/4ZsUajAkSNH7OjRo4Uu4834BY4dO2YyJaVGQJ/1Q4cOpSYzcjGNfbPdkwDPgYwAAggggEAOChDgc7BR2SUEEEAAAQS4Bp/Dx8Dy5cutbt26VqFChRzey/B2be3atVa2bFmrWbNmeIXmcEm6/q7LSPXr18/hvQxv1/bs2WObN2+2Zs2ahVdoDpeky0dLly61b33rW1m7lwT4rG06Ko4AAggggEDRAkzRF23DEgQQQAABBLJWgACftU1HxRFAAAEEEChaIL/oRSzJZoGpU6faokWLrHLlynb99de7a8fZvD+ZrvvIkSNt586drhpt2rSxK6+8MtNVysry9WeGw4cPt1tvvdXKly/v9oFjNbmmfOONN6xp06Z27rnnuowmTpzoPvt6oc//HXfckVwBZ9DWb7/9tq1evdqqVKliPXr0sOrVq9vnn39u+s4GHbv6zoY6depkjQgBPmuaqvgV/eqrr2zlypU2ePBgmzlzpvvyC33hDSkxAd0ItmPHDrv77rtdBiVKMPGViKRuAHv55Zdt/fr17m+MlQfHaiKS/95Gf6P997//3b788ktr1KhRJKPFixfbnXfeaaVLl7a8vLzI+zw5tcCSJUts9+7dzk5BfcKECXbNNdfYm2++aT/96U9t+/btpi+7+vnPf37qjDxaypnKo8ZIVVVWrFhh3/72t61kyZLWoUMHdydoqvI+E/NRQKpUqZLrLOkvEwjwiR0FOnlqNkl/2REkjtVAIv7Hffv2uc93p06dIhvry270/meffWbz5s3ji64iMqd/0qRJE+vTp49bsVSpUqZvstu0aZM1bNjQzTbpWywPHDiQVV92RYA/fbtn3RqaSg6mP8uVK+c+8Fm3Ex5VeO/evVamTBkXmObOnWvvvPOOR7XLnqroK5Njpzc5VhNvP00f63JRdNKfylWsWNH903H717/+NXoxz08hoHOl/umYHD9+vH3/+993z4NzqTbNtvMpU/SnaPBsXaSDMPiKRf0tp0afpMQFdG0zuL7ZuHFj+9Of/uQ+/InnyJaBAMdqIJGaR107DqaQ9ffbn3zyiRuJ6n3S6QW2bt1qzz33nPXr18/0WT948GDkXKqtdT7Npu8VYQR/+jbPujU0lbRq1SpXb13jrFevXtbtg08V1lTntGnTXJX05Syxo1Cf6pptdeFYTW2LKUCNHj3aZaqbwnT/CB384hlrSl430954442RH+jS5aR169a5e0Y0Pa/vp8/Pz55xcfbUtHhtxFonBdq2bWv6ZSndrazrnoMGDcIlCQGN3keNGmW6/q5rcjfddFMSubFptADHarRG8s/1LYsaYWoUqs7oZZddxj0jxWTVTXWann/xxRfdFrL80Y9+5O5z0KUOXf4IrtEXM8uMr8Y32WW8CdJXAfXedSctKTUCuuyha/Gk1AtwrKbWVFPJuhlUN9qSkhfQbIg8s+0GWwJ88m1PDggggAACCHgnwDV475qECiGQnQIaNepvhUkIIOCHAAHej3agFghkrcDGjRutZ8+eVqtWLTvvvPPcTYjPPvtsxvdHN0Pq7+xJCJypAtxkd6a2PPuNQIoEhg4d6n6i9PXXX3d3GOsnNtu3b2/nn3++u0EpRcWQDQIIxCnACD5OMFZHAIGCAvrmNH0lavDnQy1btrQZM2aY/gROSXdz6ys/q1at6r5hcfr06ZEM9Lxz587uTzl/8pOfuL871kL9WaK20Ze5XHXVVaZZAqXHHnvMfQ9B165dXX4//OEP3beLaZm+Q1y/EaC7n/W1wvpWNyXdIHXbbbe59fW3zY888oh7n/8QyHUBAnyutzD7h0CaBe69917729/+5r4M6P7777dZs2a50XvwfQEKrvqiFf3ppr6ERT80o6Sg3bdvX/enSPphpDVr1rhvXtN3N/Tu3dv9W7hwofv2sIEDB7pt1Fl4+OGH7b777rMFCxa4r2MdO3asW6Y/X2zRooV7X19QonWVXn31Vfcnjpqu159C/fGPf3Sv3UL+QyCHBbiLPocbl11DICyBDRs2uB+S0Vd8fvTRR9a9e3dT4NWNd7o2r+9Gr1+/vquOrtc//fTTLuD/4Q9/iPzy2dq1a01f1KJfl1M+6igo6fsHFLj1HQSPP/64+1vl4Bq/flCpdu3aNmTIEKtRo4brNJx11lnuy0k0g6Bt1RH45S9/aU8++aSrl/Lkzx2lQMp1AUbwud7C7B8CaRbQN4DpG78UROfMmeNubFPAV0BV0Nb0fbdu3axVq1bun4Lu7Nmz3a+gfec734nUTgFZ1+6//vpri/4BFX2HvYK3fvRHSQE9SPpSF03BK09tr+CupM5E0KHQFP+AAQPs9ttvd8s14xB8lXOQD48I5KIAAT4XW5V9QiAkAQVKfRWyptWDdPbZZ9sNN9zgRuitW7d20/OaglfQ1z9Nu2vaXtfX9VOnQdIU/WuvveauoeunO4OkbfTnd/q1L6XCfgJVP5eqDoC+iUxJ9wXo52mVVEd1PrRcP1ern//UNxOSEMh1AQJ8rrcw+4dAGgU01X3FFVe40fHKlStdScuWLXPfh65Ru75J8Xvf+56bktdNb7rurl9A0/X47373u+7HUPTb20q6gU7T6T169HA36el3zbXNiBEjTD+ccqofTNH1fnUmdC+Akn63W5cHguf9+/d3HQPdhKeZBBICZ4IAfyZ3JrQy+4hAGgUUVG+55Rb3Gwj6MQ79lrauies9Jd0Qd91119nzzz/vvjr1V7/6lbVr184tGzZsmHXs2NFN8WsqXt8Drun43/72t6bpez1XYNfI/nRJ1/z1XeH6tT/dLa9RvZJuvvvnP//p/pTv2LFjrp6asichkOsC3GSX6y3M/iEQkoBG27oRTqPpwqbRdVe7/oQtdpmuoWtKPXaErvd1fV9BPp60bdu2QrfRnfX6zvvKlSvHkx3rIpC1AgT4rG06Ko4AAggggEDRAlyDL9qGJQgggAACCGStAAE+a5uOiiOAAAIIIFC0AAG+aBuWIIAAAgggkLUCBPisbToqjgACCCCAQNECBPiibViCAAIIIIBA1goQ4LO26ag4AggggAACRQsQ4Iu2YQkCCCCAAAJZK0CAz9qmo+IIIIAAAggULfD/APCl39fkfW/3AAAAAElFTkSuQmCC" alt="plot of chunk exploreTime" /> </a>
 </div>
 </div>
 </div>
@@ -1896,18 +1896,18 @@ mergeResults(chrs='chr21', prefix="analysisResults",
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:39:01 mergeResults: Saving options used
-## 2014-09-25 04:39:01 Loading chromosome chr21
-## 2014-09-25 04:39:01 mergeResults: calculating FWER
-## 2014-09-25 04:39:01 mergeResults: Saving fullNullSummary
-## 2014-09-25 04:39:01 mergeResults: Re-calculating the p-values
-## 2014-09-25 04:39:01 mergeResults: Saving fullRegions
-## 2014-09-25 04:39:01 mergeResults: assigning genomic states
-## 2014-09-25 04:39:01 annotateRegions: counting
-## 2014-09-25 04:39:02 annotateRegions: annotating
-## 2014-09-25 04:39:02 mergeResults: Saving fullAnnotatedRegions
-## 2014-09-25 04:39:02 mergeResults: Saving fullFstats
-## 2014-09-25 04:39:02 mergeResults: Saving fullTime
+<pre style=""><code class="message r">## 2014-09-29 20:22:14 mergeResults: Saving options used
+## 2014-09-29 20:22:14 Loading chromosome chr21
+## 2014-09-29 20:22:14 mergeResults: calculating FWER
+## 2014-09-29 20:22:14 mergeResults: Saving fullNullSummary
+## 2014-09-29 20:22:14 mergeResults: Re-calculating the p-values
+## 2014-09-29 20:22:14 mergeResults: Saving fullRegions
+## 2014-09-29 20:22:14 mergeResults: assigning genomic states
+## 2014-09-29 20:22:14 annotateRegions: counting
+## 2014-09-29 20:22:15 annotateRegions: annotating
+## 2014-09-29 20:22:15 mergeResults: Saving fullAnnotatedRegions
+## 2014-09-29 20:22:15 mergeResults: Saving fullFstats
+## 2014-09-29 20:22:15 mergeResults: Saving fullTime
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2069,8 +2069,8 @@ annoRegs <- annotateRegions(fullRegions, genomicState$fullGenome)</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:39:02 annotateRegions: counting
-## 2014-09-25 04:39:02 annotateRegions: annotating
+<pre style=""><code class="message r">## 2014-09-29 20:22:15 annotateRegions: counting
+## 2014-09-29 20:22:16 annotateRegions: annotating
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2090,8 +2090,8 @@ regionCov <- getRegionCoverage(fullCov, fullRegions)</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:39:03 getRegionCoverage: processing chr21
-## 2014-09-25 04:39:03 getRegionCoverage: done processing chr21
+<pre style=""><code class="message r">## 2014-09-29 20:22:16 getRegionCoverage: processing chr21
+## 2014-09-29 20:22:16 getRegionCoverage: done processing chr21
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2141,7 +2141,7 @@ plotCluster(idx = 1, regions = fullRegions, annotation = results$annotation, cov
 </div>
 <h3>Results HTML report</h3>
 <p>We have also developed an addon package called <code>regionReport</code> available via <a href="https://github.com/lcolladotor/regionReport">GitHub</a>. For more information check its <a href="http://lcolladotor.github.io/regionReport/">vignette</a>.</p>
-<p>The function <code>derfinderRepor()</code> in <code>regionReport</code> basically takes advantage of the results from <code>mergeResults()</code> and plotting functions available in <code>derfinderPlot</code> as well as other neat features from <a href="http://rcharts.io/">rCharts</a> and <code>knitrBoostrap</code> <a id='cite-hester2014knitrbootstrap'></a>(<a href='https://github.com/jimhester/'>Hester, 2014</a>).</p>
+<p>The function <code>derfinderReport()</code> in <code>regionReport</code> basically takes advantage of the results from <code>mergeResults()</code> and plotting functions available in <code>derfinderPlot</code> as well as other neat features from <a href="http://rcharts.io/">rCharts</a> and <code>knitrBoostrap</code> <a id='cite-knitrBootstrap'></a>(<a href='https://github.com/jimhester/'>Hester, 2014</a>).</p>
 <p>The resulting HTML report promotes reproducibility of the analysis and allows you to explore in more detail the results through some diagnostic plots.</p>
 <h2>Region matrix analysis</h2>
 <p>An alternative type of analysis is driven by <code>regionMatrix()</code>. The idea is to consider consecutive bases with mean coverage above a given cutoff as potentially differentially expressed regions. Then, get a matrix where each row is one of these regions and each column represents a sample. Each cell of the matrix has the mean coverage for the specific region - sample pair. Then, other packages specialized in differential expression at the counts level can be used, for example <a href="http://www.bioconductor.org/packages/release/bioc/html/limma.html">limma</a>.</p>
@@ -2155,22 +2155,22 @@ system.time(regionMat <- regionMatrix(fullCov, cutoff = 30, L = 76, totalMapped 
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:39:03 regionMatrix: processing chr21
-## 2014-09-25 04:39:03 filterData: normalizing coverage
-## 2014-09-25 04:39:03 filterData: done normalizing coverage
-## 2014-09-25 04:39:05 filterData: originally there were 48129895 rows, now there are 189651 rows. Meaning that 99.61 percent was filtered.
-## 2014-09-25 04:39:05 findRegions: identifying potential segments
-## 2014-09-25 04:39:05 findRegions: segmenting F-stats information
-## 2014-09-25 04:39:05 findRegions: identifying candidate DERs
-## 2014-09-25 04:39:05 findRegions: identifying DER clusters
-## 2014-09-25 04:39:09 getRegionCoverage: processing chr21
-## 2014-09-25 04:39:10 getRegionCoverage: done processing chr21
+<pre style=""><code class="message r">## 2014-09-29 20:22:17 regionMatrix: processing chr21
+## 2014-09-29 20:22:17 filterData: normalizing coverage
+## 2014-09-29 20:22:17 filterData: done normalizing coverage
+## 2014-09-29 20:22:19 filterData: originally there were 48129895 rows, now there are 189651 rows. Meaning that 99.61 percent was filtered.
+## 2014-09-29 20:22:19 findRegions: identifying potential segments
+## 2014-09-29 20:22:19 findRegions: segmenting F-stats information
+## 2014-09-29 20:22:19 findRegions: identifying candidate DERs
+## 2014-09-29 20:22:19 findRegions: identifying DER clusters
+## 2014-09-29 20:22:22 getRegionCoverage: processing chr21
+## 2014-09-29 20:22:24 getRegionCoverage: done processing chr21
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##    user  system elapsed 
-##   7.122   0.801   7.904
+##   7.343   0.797   8.115
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2331,14 +2331,14 @@ system.time(exonCov <- coverageToExon(fullCov, genomicState$fullGenome, L = 76))
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:39:15 coverageToExon: processing chromosome chr21
-## 2014-09-25 04:39:20 coverageToExon: processing chromosome chr21
+<pre style=""><code class="message r">## 2014-09-29 20:22:29 coverageToExon: processing chromosome chr21
+## 2014-09-29 20:22:34 coverageToExon: processing chromosome chr21
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##    user  system elapsed 
-##   8.655   2.818  11.439
+##   8.649   2.694  11.254
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2387,14 +2387,14 @@ system.time(annoGenome <- annotateRegions(regionMat$chr21$regions, genomicState$
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:39:24 annotateRegions: counting
-## 2014-09-25 04:39:24 annotateRegions: annotating
+<pre style=""><code class="message r">## 2014-09-29 20:22:37 annotateRegions: counting
+## 2014-09-29 20:22:37 annotateRegions: annotating
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##    user  system elapsed 
-##   0.432   0.003   0.434
+##   0.461   0.004   0.463
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2417,7 +2417,7 @@ system.time(annoNear <- annotateNearest(regionMat$chr21$regions, subject = 'hg19
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##    user  system elapsed 
-##  80.967   0.407  81.137
+##  83.117   0.448  83.316
 </code></pre>
 </div>
 <p>Now we can proceed to use <code>derfinderPlot</code> to make the region level plots for the top 100 regions.</p>
@@ -2471,8 +2471,8 @@ bw <- createBw(fullCovSmall)</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## 2014-09-25 04:40:46 coerceGR: coercing sample HSB97
-## 2014-09-25 04:40:46 createBwSample: exporting bw for sample HSB97
+<pre style=""><code class="message r">## 2014-09-29 20:24:01 coerceGR: coercing sample HSB97
+## 2014-09-29 20:24:01 createBwSample: exporting bw for sample HSB97
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -2541,7 +2541,7 @@ sapply(c('analyzeChr', 'loadCoverage'), advancedArg, browse = FALSE)</code></pre
 <h1>Summary</h1>
 <p>We have illustrated how to identify candidate differentially expressed regions without using annotation in the identification process by using <code>analyzeChr()</code>. Furthermore, we covered how to perform the region matrix analysis with <code>regionMatrix()</code>. We also highlighted other uses of the <code>derfinder</code> package.</p>
 <h1>Origins</h1>
-<p>This implementation of <code>derfinder</code> (<a href='https://github.com/lcolladotor/derfinder'>Collado-Torres, Frazee, Jaffe, and Leek, 2014</a>) has its origins in <a href="https://github.com/alyssafrazee/derfinder">Alyssa C. Frazee's derfinder</a> <a id='cite-frazeeder'></a>(<a href='#bib-frazeeder'>Frazee, Sabunciyan, Hansen, Irizzary, et al., 2013</a>). The statistical methods and implementation by now are very different.</p>
+<p>This implementation of <code>derfinder</code> (<a href='https://github.com/lcolladotor/derfinder'>Collado-Torres, Frazee, Jaffe, and Leek, 2014</a>) has its origins in <a href="https://github.com/alyssafrazee/derfinder">Alyssa C. Frazee's derfinder</a> <a id='cite-originalder'></a>(<a href='#bib-originalder'>Frazee, Sabunciyan, Hansen, Irizzary, et al., 2013</a>). The statistical methods and implementation by now are very different.</p>
 <h1>Citing <code>derfinder</code></h1>
 <p>Please use:</p>
 <div class="row">
@@ -2558,7 +2558,7 @@ citation('derfinder')</code></pre>
 ## 
 ##   Leonardo Collado-Torres, Alyssa Frazee, Andrew Jaffe and Jeffrey
 ##   Leek (2014). derfinder: Fast differential expression analysis of
-##   RNA-seq data at base-pair resolution. R package version 0.99.0.
+##   RNA-seq data at base-pair resolution. R package version 0.99.2.
 ##   https://github.com/lcolladotor/derfinder
 ## 
 ## A BibTeX entry for LaTeX users is
@@ -2568,12 +2568,40 @@ citation('derfinder')</code></pre>
 ## resolution},
 ##     author = {Leonardo Collado-Torres and Alyssa Frazee and Andrew Jaffe and Jeffrey Leek},
 ##     year = {2014},
-##     note = {R package version 0.99.0},
+##     note = {R package version 0.99.2},
 ##     url = {https://github.com/lcolladotor/derfinder},
 ##   }
 </code></pre>
 </div>
 <h1>Reproducibility</h1>
+<p>This package was made possible thanks to:</p>
+<ul>
+<li>R <a id='cite-R'></a>(<a href='http://www.R-project.org/'>R Core Team, 2014</a>)</li>
+<li>AnnotationDbi <a id='cite-AnnotationDbi'></a>(<a href='#bib-AnnotationDbi'>Pages, Carlson, Falcon, and Li, 2014</a>)</li>
+<li>BiocParallel <a id='cite-BiocParallel'></a>(<a href='#bib-BiocParallel'>Morgan, Lang, and Thompson, 2014</a>)</li>
+<li>bumphunter <a id='cite-bumphunter'></a>(<a href='#bib-bumphunter'>Irizarry, Aryee, Bravo, Hansen, et al., 2014</a>) and <a id='cite-bumphunterPaper'></a>(<a href='#bib-bumphunterPaper'>Jaffe, E, Murakami, Peter, et al., 2012</a>)</li>
+<li>derfinderHelper <a id='cite-derfinderHelper'></a>(<a href='https://github.com/lcolladotor/derfinderHelper'>Collado-Torres, Jaffe, and Leek, 2014</a>)</li>
+<li>GenomeInfoDb <a id='cite-GenomeInfoDb'></a>(<a href='#bib-GenomeInfoDb'>Arora, Morgan, Carlson, and Pages, 2014</a>)</li>
+<li>GenomicAlignments <a id='cite-GenomicAlignments'></a>(<a href='http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118'>Lawrence, Huber, Pagès, Aboyoun, et al., 2013</a>)</li>
+<li>GenomicFeatures (<a href='http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118'>Lawrence, Huber, Pagès, Aboyoun, et al., 2013</a>)</li>
+<li>GenomicFiles <a id='cite-GenomicFiles'></a>(<a href='#bib-GenomicFiles'>Obenchain, Love, and Morgan, 2014</a>)</li>
+<li>GenomicRanges (<a href='http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118'>Lawrence, Huber, Pagès, Aboyoun, et al., 2013</a>)</li>
+<li>Hmisc <a id='cite-Hmisc'></a>(<a href='http://CRAN.R-project.org/package=Hmisc'>Jr, with contributions from Charles Dupont, and many others., 2014</a>)</li>
+<li>IRanges (<a href='http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118'>Lawrence, Huber, Pagès, Aboyoun, et al., 2013</a>)</li>
+<li>qvalue <a id='cite-qvalue'></a>(<a href='#bib-qvalue'>Dabney and Storey, 2014</a>)</li>
+<li>Rsamtools <a id='cite-Rsamtools'></a>(<a href='http://bioconductor.org/packages/release/bioc/html/Rsamtools.html'>Morgan, Pagès, Obenchain, and Hayden, 2014</a>)</li>
+<li>rtracklayer <a id='cite-rtracklayer'></a>(<a href='http://bioinformatics.oxfordjournals.org/content/25/14/1841.abstract'>Lawrence, Gentleman, and Carey, 2009</a>)</li>
+<li>S4Vectors <a id='cite-S4Vectors'></a>(<a href='#bib-S4Vectors'>Pages, Lawrence, and Aboyoun, 2014</a>)</li>
+<li>biovizBase <a id='cite-biovizBase'></a>(<a href='#bib-biovizBase'>Yin, Lawrence, and Cook, 2014</a>)</li>
+<li>devtools <a id='cite-devtools'></a>(<a href='http://CRAN.R-project.org/package=devtools'>Wickham and Chang, 2014</a>)</li>
+<li>ggplot2 <a id='cite-ggplot2'></a>(<a href='http://had.co.nz/ggplot2/book'>Wickham, 2009</a>)</li>
+<li>knitcitations <a id='cite-knitcitations'></a>(<a href='https://github.com/cboettig/knitcitations'>Boettiger, 2014</a>)</li>
+<li>knitr <a id='cite-knitr'></a>(<a href='http://www.crcpress.com/product/isbn/9781466561595'>Xie, 2014</a>)</li>
+<li>knitrBootstrap (<a href='https://github.com/jimhester/'>Hester, 2014</a>)</li>
+<li>rmarkdown <a id='cite-rmarkdown'></a>(<a href='http://CRAN.R-project.org/package=rmarkdown'>Allaire, McPherson, Xie, Wickham, et al., 2014</a>)</li>
+<li>testthat <a id='cite-testthat'></a>(<a href='http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf'>Wickham, 2011</a>)</li>
+<li>TxDb.Hsapiens.UCSC.hg19.knownGene <a id='cite-TxDbHsapiensUCSChg19knownGene'></a>(<a href='#bib-TxDbHsapiensUCSChg19knownGene'>Carlson, 2014</a>)</li>
+</ul>
 <p>Code for creating the vignette</p>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
@@ -2610,7 +2638,7 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## [1] "2014-09-25 04:40:47 EDT"
+<pre style=""><code class="output r">## [1] "2014-09-29 20:24:02 EDT"
 </code></pre>
 </div>
 <p>Wallclock time spent generating the vignette.</p>
@@ -2618,7 +2646,7 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## Time difference of 3.417 mins
+<pre style=""><code class="output r">## Time difference of 3.657 mins
 </code></pre>
 </div>
 <p><code>R</code> session information.</p>
@@ -2650,6 +2678,7 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 <pre style=""><code class="output r">##  package           * version  date      
 ##  acepack             1.3.3.3  2013-05-03
 ##  AnnotationDbi       1.27.15  2014-09-24
+##  base64enc           0.1.2    2014-06-26
 ##  BatchJobs           1.3      2014-07-10
 ##  BBmisc              1.7      2014-06-21
 ##  bibtex              0.3.6    2013-07-29
@@ -2665,9 +2694,9 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 ##  cluster             1.15.3   2014-09-04
 ##  codetools           0.2.9    2014-08-21
 ##  colorspace          1.2.4    2013-09-30
-##  DBI                 0.3.0    2014-09-03
-##  derfinder         * 0.99.0   2014-09-25
-##  derfinderHelper     0.99.0   2014-09-25
+##  DBI                 0.3.1    2014-09-24
+##  derfinder         * 0.99.2   2014-09-30
+##  derfinderHelper     0.99.2   2014-09-29
 ##  devtools          * 1.6      2014-09-23
 ##  digest              0.6.4    2013-12-03
 ##  doRNG               1.6      2014-03-07
@@ -2691,9 +2720,9 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 ##  httr                0.5      2014-09-02
 ##  IRanges           * 1.99.28  2014-09-10
 ##  iterators         * 1.0.7    2014-04-11
-##  knitcitations     * 1.0.2    2014-09-23
-##  knitr               1.6      2014-05-25
-##  knitrBootstrap    * 1.0.0    2014-09-23
+##  knitcitations     * 1.0.2    2014-09-29
+##  knitr             * 1.6      2014-05-25
+##  knitrBootstrap    * 1.0.0    2014-09-29
 ##  labeling            0.3      2014-08-23
 ##  lambda.r            1.1.6    2014-01-23
 ##  lattice             0.20.29  2014-04-04
@@ -2729,17 +2758,18 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 ##  rtracklayer         1.25.16  2014-09-10
 ##  S4Vectors         * 0.2.4    2014-09-14
 ##  scales              0.2.4    2014-04-22
-##  sendmailR           1.1.2    2012-11-15
+##  sendmailR           1.2.1    2014-09-21
 ##  stringr             0.6.2    2012-12-06
 ##  survival            2.37.7   2014-01-22
 ##  XML                 3.98.1.1 2013-06-20
-##  xtable            * 1.7.4    2014-09-12
+##  xtable              1.7.4    2014-09-12
 ##  XVector             0.5.8    2014-09-07
 ##  yaml                2.1.13   2014-06-12
 ##  zlibbioc            1.11.1   2014-04-19
 ##  source                                      
 ##  CRAN (R 3.1.0)                              
 ##  Bioconductor                                
+##  CRAN (R 3.1.0)                              
 ##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.0)                              
 ##  CRAN (R 3.1.0)                              
@@ -2756,8 +2786,8 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 ##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.0)                              
 ##  CRAN (R 3.1.1)                              
-##  Github (lcolladotor/derfinder@5e07a12)      
-##  Github (lcolladotor/derfinderHelper@5a7fb10)
+##  Github (lcolladotor/derfinder@cc7af0a)      
+##  Github (lcolladotor/derfinderHelper@54a9721)
 ##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.0)                              
 ##  CRAN (R 3.1.1)                              
@@ -2781,7 +2811,7 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 ##  CRAN (R 3.1.1)                              
 ##  Bioconductor                                
 ##  CRAN (R 3.1.0)                              
-##  Github (cboettig/knitcitations@6503acb)     
+##  Github (cboettig/knitcitations@f567713)     
 ##  CRAN (R 3.1.0)                              
 ##  Github (jimhester/knitrBootstrap@76c41f0)   
 ##  CRAN (R 3.1.1)                              
@@ -2819,7 +2849,7 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 ##  Bioconductor                                
 ##  Bioconductor                                
 ##  CRAN (R 3.1.0)                              
-##  CRAN (R 3.1.0)                              
+##  CRAN (R 3.1.1)                              
 ##  CRAN (R 3.1.0)                              
 ##  CRAN (R 3.1.0)                              
 ##  CRAN (R 3.1.0)                              
@@ -2830,29 +2860,88 @@ knit('derfinder.Rmd', tangle = TRUE)</code></pre>
 </code></pre>
 </div>
 <h1>Bibliography</h1>
-<p>This vignette was generated using <code>knitrBootstrap</code> (<a href='https://github.com/jimhester/'>Hester, 2014</a>) with <code>knitr</code> <a id='cite-xie2014knitr'></a>(<a href='http://www.crcpress.com/product/isbn/9781466561595'>Xie, 2014</a>) and <code>rmarkdown</code> <a id='cite-allaire2014rmarkdown'></a>(<a href='http://CRAN.R-project.org/package=rmarkdown'>Allaire, McPherson, Xie, Wickham, et al., 2014</a>) running behind the scenes.</p>
-<p>Citations made with <code>knitcitations</code> <a id='cite-boettigerknitcitations'></a>(<a href='https://github.com/cboettig/knitcitations'>Boettiger, 2014</a>).</p>
+<p>This vignette was generated using <code>knitrBootstrap</code> (<a href='https://github.com/jimhester/'>Hester, 2014</a>) with <code>knitr</code> (<a href='http://www.crcpress.com/product/isbn/9781466561595'>Xie, 2014</a>) and <code>rmarkdown</code> (<a href='http://CRAN.R-project.org/package=rmarkdown'>Allaire, McPherson, Xie, Wickham, et al., 2014</a>) running behind the scenes.</p>
+<p>Citations made with <code>knitcitations</code> (<a href='https://github.com/cboettig/knitcitations'>Boettiger, 2014</a>).</p>
 <div class="row">
 <p>
-<a id='bib-allaire2014rmarkdown'></a><a href="#cite-allaire2014rmarkdown">[1]</a><cite> J. Allaire, J. McPherson, Y. Xie, H. Wickham, et al. <EM>rmarkdown: Dynamic Documents for R</EM>. R package version 0.3.3. 2014. URL: <a href="http://CRAN.R-project.org/package=rmarkdown">http://CRAN.R-project.org/package=rmarkdown</a>.</cite>
+<a id='bib-rmarkdown'></a><a href="#cite-rmarkdown">[1]</a><cite> J. Allaire, J. McPherson, Y. Xie, H. Wickham, et al. <EM>rmarkdown: Dynamic Documents for R</EM>. R package version 0.3.3. 2014. URL: <a href="http://CRAN.R-project.org/package=rmarkdown">http://CRAN.R-project.org/package=rmarkdown</a>.</cite>
 </p>
 <p>
-<a id='bib-boettigerknitcitations'></a><a href="#cite-boettigerknitcitations">[2]</a><cite> C. Boettiger. <EM>knitcitations: Citations for knitr markdown files</EM>. R package version 1.0.2. 2014. URL: <a href="https://github.com/cboettig/knitcitations">https://github.com/cboettig/knitcitations</a>.</cite>
+<a id='bib-GenomeInfoDb'></a><a href="#cite-GenomeInfoDb">[2]</a><cite> S. Arora, M. Morgan, M. Carlson and H. Pages. <EM>GenomeInfoDb: Utilities for manipulating chromosome and other 'seqname' identifiers</EM>. R package version 1.1.20. 2014.</cite>
 </p>
 <p>
-<a id='bib-brainspan'></a><a href="#cite-brainspan">[3]</a><cite> BrainSpan. “Atlas of the Developing Human Brain [Internet]. Funded by ARRA Awards 1RC2MH089921-01, 1RC2MH090047-01, and 1RC2MH089929-01.” 2011. URL: <a href="http://developinghumanbrain.org">http://developinghumanbrain.org</a>.</cite>
+<a id='bib-knitcitations'></a><a href="#cite-knitcitations">[3]</a><cite> C. Boettiger. <EM>knitcitations: Citations for knitr markdown files</EM>. R package version 1.0.2. 2014. URL: <a href="https://github.com/cboettig/knitcitations">https://github.com/cboettig/knitcitations</a>.</cite>
 </p>
 <p>
-<a id='bib-colladotorres2014derfinder'></a><a href="#cite-colladotorres2014derfinder">[4]</a><cite> L. Collado-Torres, A. Frazee, A. Jaffe and J. Leek. <EM>derfinder: Fast differential expression analysis of RNA-seq data at base-pair resolution</EM>. R package version 0.99.0. 2014. URL: <a href="https://github.com/lcolladotor/derfinder">https://github.com/lcolladotor/derfinder</a>.</cite>
+<a id='bib-brainspan'></a><a href="#cite-brainspan">[4]</a><cite> BrainSpan. “Atlas of the Developing Human Brain [Internet]. Funded by ARRA Awards 1RC2MH089921-01, 1RC2MH090047-01, and 1RC2MH089929-01.” 2011. URL: <a href="http://developinghumanbrain.org">http://developinghumanbrain.org</a>.</cite>
 </p>
 <p>
-<a id='bib-frazeeder'></a><a href="#cite-frazeeder">[5]</a><cite> A. C. Frazee, S. Sabunciyan, K. D. Hansen, R. A. Irizzary, et al. “Differential expression analysis of RNA-seq data at single-base resolution”. In: <EM>Biostatistics</EM> (2013).</cite>
+<a id='bib-TxDbHsapiensUCSChg19knownGene'></a><a href="#cite-TxDbHsapiensUCSChg19knownGene">[5]</a><cite> M. Carlson. <EM>TxDb.Hsapiens.UCSC.hg19.knownGene: Annotation package for TranscriptDb object(s)</EM>. R package version 2.14.0. 2014.</cite>
 </p>
 <p>
-<a id='bib-hester2014knitrbootstrap'></a><a href="#cite-hester2014knitrbootstrap">[6]</a><cite> J. Hester. <EM>knitrBootstrap: Knitr Bootstrap framework.</EM> R package version 1.0.0. 2014. URL: <a href="https://github.com/jimhester/">https://github.com/jimhester/</a>.</cite>
+<a id='bib-derfinder'></a><a href="#cite-derfinder">[6]</a><cite> L. Collado-Torres, A. Frazee, A. Jaffe and J. Leek. <EM>derfinder: Fast differential expression analysis of RNA-seq data at base-pair resolution</EM>. R package version 0.99.2. 2014. URL: <a href="https://github.com/lcolladotor/derfinder">https://github.com/lcolladotor/derfinder</a>.</cite>
 </p>
 <p>
-<a id='bib-xie2014knitr'></a><a href="#cite-xie2014knitr">[7]</a><cite> Y. Xie. “knitr: A Comprehensive Tool for Reproducible Research in R”. In: <EM>Implementing Reproducible Computational Research</EM>. Ed. by V. Stodden, F. Leisch and R. D. Peng. ISBN 978-1466561595. Chapman and Hall/CRC, 2014. URL: <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.</cite>
+<a id='bib-derfinderHelper'></a><a href="#cite-derfinderHelper">[7]</a><cite> L. Collado-Torres, A. Jaffe and J. Leek. <EM>derfinderHelper: derfinder helper package</EM>. R package version 0.99.2. 2014. URL: <a href="https://github.com/lcolladotor/derfinderHelper">https://github.com/lcolladotor/derfinderHelper</a>.</cite>
+</p>
+<p>
+<a id='bib-qvalue'></a><a href="#cite-qvalue">[8]</a><cite> A. Dabney and J. D. Storey. <EM>qvalue: Q-value estimation for false discovery rate control</EM>. R package version 1.39.1. 2014.</cite>
+</p>
+<p>
+<a id='bib-originalder'></a><a href="#cite-originalder">[9]</a><cite> A. C. Frazee, S. Sabunciyan, K. D. Hansen, R. A. Irizzary, et al. “Differential expression analysis of RNA-seq data at single-base resolution”. In: <EM>Biostatistics</EM> (2013).</cite>
+</p>
+<p>
+<a id='bib-knitrBootstrap'></a><a href="#cite-knitrBootstrap">[10]</a><cite> J. Hester. <EM>knitrBootstrap: Knitr Bootstrap framework.</EM> R package version 1.0.0. 2014. URL: <a href="https://github.com/jimhester/">https://github.com/jimhester/</a>.</cite>
+</p>
+<p>
+<a id='bib-bumphunter'></a><a href="#cite-bumphunter">[11]</a><cite> R. A. Irizarry, M. Aryee, H. C. Bravo, K. D. Hansen, et al. <EM>bumphunter: Bump Hunter</EM>. R package version 1.5.5. 2014.</cite>
+</p>
+<p>
+<a id='bib-bumphunterPaper'></a><a href="#cite-bumphunterPaper">[12]</a><cite> Jaffe, A. E, Murakami, Peter, et al. “Bump hunting to identify differentially methylated regions in epigenetic epidemiology studies”. In: <EM>International Journal of Epidemiology</EM> (2012).</cite>
+</p>
+<p>
+<a id='bib-Hmisc'></a><a href="#cite-Hmisc">[13]</a><cite> F. E. H. Jr, with contributions from Charles Dupont and many others. <EM>Hmisc: Harrell Miscellaneous</EM>. R package version 3.14-5. 2014. URL: <a href="http://CRAN.R-project.org/package=Hmisc">http://CRAN.R-project.org/package=Hmisc</a>.</cite>
+</p>
+<p>
+<a id='bib-rtracklayer'></a><a href="#cite-rtracklayer">[14]</a><cite> M. Lawrence, R. Gentleman and V. Carey. “rtracklayer: an R package for interfacing with genome browsers”. In: <EM>Bioinformatics</EM> 25 (2009), pp. 1841-1842. DOI: <a href="http://dx.doi.org/10.1093/bioinformatics/btp328">10.1093/bioinformatics/btp328</a>. URL: <a href="http://bioinformatics.oxfordjournals.org/content/25/14/1841.abstract">http://bioinformatics.oxfordjournals.org/content/25/14/1841.abstract</a>.</cite>
+</p>
+<p>
+<a id='bib-GenomicAlignments'></a><a href="#cite-GenomicAlignments">[15]</a><cite> M. Lawrence, W. Huber, H. Pagès, P. Aboyoun, et al. “Software for Computing and Annotating Genomic Ranges”. In: <EM>PLoS Computational Biology</EM> 9 (8 2013). DOI: <a href="http://dx.doi.org/10.1371/journal.pcbi.1003118">10.1371/journal.pcbi.1003118</a>. URL: <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118}.">http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118}.</a>
+</p>
+</cite>
+</p>
+<p>
+<a id='bib-BiocParallel'></a><a href="#cite-BiocParallel">[16]</a><cite> M. Morgan, M. Lang and R. Thompson. <EM>BiocParallel: Bioconductor facilities for parallel evaluation</EM>. R package version 0.99.22. 2014.</cite>
+</p>
+<p>
+<a id='bib-Rsamtools'></a><a href="#cite-Rsamtools">[17]</a><cite> M. Morgan, H. Pagès, V. Obenchain and N. Hayden. <EM>Rsamtools: Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import</EM>. R package version 1.17.34. 2014. URL: <a href="http://bioconductor.org/packages/release/bioc/html/Rsamtools.html">http://bioconductor.org/packages/release/bioc/html/Rsamtools.html</a>.</cite>
+</p>
+<p>
+<a id='bib-GenomicFiles'></a><a href="#cite-GenomicFiles">[18]</a><cite> V. Obenchain, M. Love and M. Morgan. <EM>GenomicFiles: Distributed computing by file or by range</EM>. R package version 1.1.19. 2014.</cite>
+</p>
+<p>
+<a id='bib-AnnotationDbi'></a><a href="#cite-AnnotationDbi">[19]</a><cite> H. Pages, M. Carlson, S. Falcon and N. Li. <EM>AnnotationDbi: Annotation Database Interface</EM>. R package version 1.27.15. 2014.</cite>
+</p>
+<p>
+<a id='bib-S4Vectors'></a><a href="#cite-S4Vectors">[20]</a><cite> H. Pages, M. Lawrence and P. Aboyoun. <EM>S4Vectors: S4 implementation of vectors and lists</EM>. R package version 0.2.4. 2014.</cite>
+</p>
+<p>
+<a id='bib-R'></a><a href="#cite-R">[21]</a><cite> R Core Team. <EM>R: A Language and Environment for Statistical Computing</EM>. R Foundation for Statistical Computing. Vienna, Austria, 2014. URL: <a href="http://www.R-project.org/">http://www.R-project.org/</a>.</cite>
+</p>
+<p>
+<a id='bib-ggplot2'></a><a href="#cite-ggplot2">[22]</a><cite> H. Wickham. <EM>ggplot2: elegant graphics for data analysis</EM>. Springer New York, 2009. ISBN: 978-0-387-98140-6. URL: <a href="http://had.co.nz/ggplot2/book">http://had.co.nz/ggplot2/book</a>.</cite>
+</p>
+<p>
+<a id='bib-testthat'></a><a href="#cite-testthat">[23]</a><cite> H. Wickham. “testthat: Get Started with Testing”. In: <EM>The R Journal</EM> 3 (2011), pp. 5–10. URL: <a href="http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf">http://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.</cite>
+</p>
+<p>
+<a id='bib-devtools'></a><a href="#cite-devtools">[24]</a><cite> H. Wickham and W. Chang. <EM>devtools: Tools to make developing R code easier</EM>. R package version 1.6. 2014. URL: <a href="http://CRAN.R-project.org/package=devtools">http://CRAN.R-project.org/package=devtools</a>.</cite>
+</p>
+<p>
+<a id='bib-knitr'></a><a href="#cite-knitr">[25]</a><cite> Y. Xie. “knitr: A Comprehensive Tool for Reproducible Research in R”. In: <EM>Implementing Reproducible Computational Research</EM>. Ed. by V. Stodden, F. Leisch and R. D. Peng. ISBN 978-1466561595. Chapman and Hall/CRC, 2014. URL: <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.</cite>
+</p>
+<p>
+<a id='bib-biovizBase'></a><a href="#cite-biovizBase">[26]</a><cite> T. Yin, M. Lawrence and D. Cook. <EM>biovizBase: Basic graphic utilities for visualization of genomic data.</EM> R package version 1.13.11. 2014.</cite>
 </p>
 </div>
 </div>

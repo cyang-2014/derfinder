@@ -13,18 +13,43 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 # https://github.com/cboettig/knitcitations/issues/63
 
 ## Write bibliography information
-write.bibtex(c(knitcitations = citation('knitcitations'),
+bibs <- c(knitcitations = citation('knitcitations'),
     derfinder = citation('derfinder'), 
     knitrBootstrap = citation('knitrBootstrap'), 
     knitr = citation('knitr')[3],
     rmarkdown = citation('rmarkdown'),
     brainspan = RefManageR::BibEntry(bibtype = 'Unpublished', key = 'brainspan', title = 'Atlas of the Developing Human Brain [Internet]. Funded by ARRA Awards 1RC2MH089921-01, 1RC2MH090047-01, and 1RC2MH089929-01.', author = 'BrainSpan', year = 2011, url = 'http://developinghumanbrain.org'),
-    originalder = RefManageR::BibEntry(bibtype = 'article', key = 'frazeeder', title = 'Differential expression analysis of RNA-seq data at single-base resolution', author = 'Alyssa C. Frazee and Sarven Sabunciyan and Kasper D. Hansen and Rafael A. Irizzary and Jeffrey T. Leek', year = 2013, journal = 'Biostatistics')),
+    originalder = RefManageR::BibEntry(bibtype = 'article', key = 'originalder', title = 'Differential expression analysis of RNA-seq data at single-base resolution', author = 'Alyssa C. Frazee and Sarven Sabunciyan and Kasper D. Hansen and Rafael A. Irizzary and Jeffrey T. Leek', year = 2013, journal = 'Biostatistics'),
+    R = citation(),
+    IRanges = citation('IRanges'),
+    devtools = citation('devtools'),
+    testthat = citation('testthat'),
+    GenomeInfoDb = citation('GenomeInfoDb'),
+    GenomicRanges = citation('GenomicRanges'),
+    ggplot2 = citation('ggplot2'),
+    biovizBase = citation('biovizBase'),
+    bumphunter = citation('bumphunter'),
+    TxDb.Hsapiens.UCSC.hg19.knownGene = citation('TxDb.Hsapiens.UCSC.hg19.knownGene'),
+    AnnotationDbi = citation('AnnotationDbi'),
+    BiocParallel = citation('BiocParallel'),
+    derfinderHelper = citation('derfinderHelper'),
+    GenomicAlignments = citation('GenomicAlignments'),
+    GenomicFeatures = citation('GenomicFeatures'),
+    GenomicFiles = citation('GenomicFiles'),
+    Hmisc = citation('Hmisc'),
+    qvalue = citation('qvalue'),
+    Rsamtools = citation('Rsamtools'),
+    rtracklayer = citation('rtracklayer'),
+    S4Vectors = citation('S4Vectors'),
+    bumphunterPaper = RefManageR::BibEntry(bibtype = 'article', key = 'bumphunterPaper', title = 'Bump hunting to identify differentially methylated regions in epigenetic epidemiology studies', author = 'Jaffe, Andrew E and Murakami, Peter and Lee, Hwajin and Leek, Jeffrey T and Fallin, M Daniele and Feinberg, Andrew P and Irizarry, Rafael A', year = 2012, journal = 'International Journal of Epidemiology')
+)
+
+write.bibtex(bibs,
     file = 'derfinderRef.bib')
 bib <- read.bibtex('derfinderRef.bib')
 
-## Fix some names to work with CRAN and GitHub versions
-names(bib)[names(bib) == 'hester2013knitrbootstrap'] <- 'hester2014knitrbootstrap'
+## Assign short names
+names(bib) <- names(bibs)
 
 
 ## ----'start', message=FALSE----------------------------------------------
@@ -33,9 +58,7 @@ library('derfinder')
 
 
 ## ----'phenoData', bootstrap.show.code=FALSE, results = 'asis'------------
-## To format
-library('xtable')
-
+library('knitr')
 ## Construct pheno table
 pheno <- data.frame(
     gender = c('F', 'M', 'M', 'M', 'F', 'F', 'F', 'M', 'F', 'M', 'M', 'F'),
@@ -50,7 +73,7 @@ pheno$group <- factor(ifelse(pheno$Age < 0, 'fetal', 'adult'), levels = c('fetal
 
 ## Display the main information
 p <- pheno[, -which(colnames(pheno) %in% c('structure_acronym', 'structure_name', 'file'))]
-print(xtable(p), type = 'html')
+kable(p, format = 'html', row.names = TRUE)
 
 
 ## ----'getData'-----------------------------------------------------------
@@ -413,7 +436,7 @@ library('devtools')
 session_info()
 
 
-## ----vignetteBiblio, results='asis', echo=FALSE--------------------------
+## ----vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE-----
 ## Print bibliography
 bibliography()
 
