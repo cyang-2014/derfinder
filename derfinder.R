@@ -52,6 +52,9 @@ bib <- read.bibtex('derfinderRef.bib')
 ## Assign short names
 names(bib) <- names(bibs)
 
+## Working on Windows?
+windowsFlag <- .Platform$OS.type == 'windows'
+
 
 ## ----'start', message=FALSE----------------------------------------------
 ## Load libraries
@@ -70,13 +73,22 @@ rownames(p) <- NULL
 kable(p, format = 'html', row.names = TRUE)
 
 
-## ----'getData'-----------------------------------------------------------
+## ----'getData', eval = !windowsFlag--------------------------------------
 ## Determine the files to use and fix the names
 files <- rawFiles(system.file('extdata', 'AMY', package = 'derfinderData'), samplepatt = 'bw', fileterm = NULL)
 names(files) <- gsub('.bw', '', names(files))
 
 ## Load the data from disk
 system.time(fullCov <- fullCoverage(files = files, chrs = 'chr21'))
+
+
+## ----'getDataWindows', eval = windowsFlag, echo = FALSE------------------
+## ## Load data in Windows case
+## foo <- function() {
+##     load(system.file('extdata', 'fullCov', 'fullCovAMY.RData', package = 'derfinderData'))
+##     return(fullCovAMY)
+## }
+## fullCov <- foo()
 
 
 ## ----'webData', eval = FALSE---------------------------------------------
@@ -116,7 +128,7 @@ sampleDepths
 
 ## ----'makeModels'--------------------------------------------------------
 ## Define models
-models <- makeModels(sampleDepths, testvars = pheno$group, adjustvars = pheno[, c('gender', 'RIN')]) 
+models <- makeModels(sampleDepths, testvars = pheno$group, adjustvars = pheno[, c('gender')]) 
 
 ## Explore the models
 lapply(models, head)
@@ -129,7 +141,7 @@ originalWd <- getwd()
 setwd(file.path(originalWd, 'analysisResults'))
 
 ## Perform differential expression analysis
-system.time(results <- analyzeChr(chr = 'chr21', filteredCov$chr21, models, groupInfo = pheno$group, writeOutput = TRUE, cutoffFstat = 1e-02, nPermute = 20, seeds = 20140923 + seq_len(20), returnOutput = TRUE))
+system.time(results <- analyzeChr(chr = 'chr21', filteredCov$chr21, models, groupInfo = pheno$group, writeOutput = TRUE, cutoffFstat = 5e-02, nPermute = 20, seeds = 20140923 + seq_len(20), returnOutput = TRUE))
 
 
 ## ----'exploreResults'----------------------------------------------------
@@ -414,7 +426,7 @@ citation('derfinder')
 ## # system.time(render('derfinder.Rmd', 'html_document'))
 ## ## Clean up
 ## unlink('analysisResults', recursive = TRUE)
-## file.remove('HSB97.bw')
+## file.remove('HSB113.bw')
 ## file.remove('derfinderRef.bib')
 ## 
 ## ## Extract the R code
